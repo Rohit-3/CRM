@@ -17,6 +17,7 @@ import {
   Plus,
   Brain,
   Sparkles,
+  LayoutGrid,
 } from 'lucide-react';
 import { getDashboardStats, getPipelineStages, getLeadSources } from '@/db/api';
 import type { DashboardStats, PipelineStage, LeadSourceData } from '@/types/types';
@@ -316,6 +317,12 @@ export default function Dashboard() {
               <Button variant="outline" className="w-full justify-start">
                 <Users className="mr-2 h-4 w-4" />
                 Add New Contact
+              </Button>
+            </Link>
+            <Link to="/pipeline">
+              <Button variant="outline" className="w-full justify-start">
+                <LayoutGrid className="mr-2 h-4 w-4" />
+                View Pipeline
               </Button>
             </Link>
             <Link to="/opportunities">

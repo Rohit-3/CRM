@@ -7,6 +7,7 @@ const Leads = lazy(() => import('./pages/Leads'));
 const Contacts = lazy(() => import('./pages/Contacts'));
 const Accounts = lazy(() => import('./pages/Accounts'));
 const Opportunities = lazy(() => import('./pages/Opportunities'));
+const Pipeline = lazy(() => import('./pages/Pipeline'));
 const Tasks = lazy(() => import('./pages/Tasks'));
 const Reports = lazy(() => import('./pages/Reports'));
 const AIInsights = lazy(() => import('./pages/AIInsights'));
@@ -45,6 +46,11 @@ const routes: RouteConfig[] = [
     name: 'Opportunities',
     path: '/opportunities',
     element: <Opportunities />,
+  },
+  {
+    name: 'Pipeline',
+    path: '/pipeline',
+    element: <Pipeline />,
   },
   {
     name: 'Tasks',
