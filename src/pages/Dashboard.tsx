@@ -222,12 +222,12 @@ export default function Dashboard() {
       </div>
 
       {/* Main Content Grid */}
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {/* Pipeline Overview */}
-        <Card className="lg:col-span-2 bg-card border-border">
-          <CardHeader className="flex flex-row items-center justify-between">
+      <div className="grid gap-6 lg:grid-cols-7">
+        {/* Pipeline Overview - Takes 4 columns */}
+        <Card className="lg:col-span-4 bg-card border-border">
+          <CardHeader className="flex flex-row items-center justify-between pb-4">
             <div>
-              <CardTitle>Sales Pipeline</CardTitle>
+              <CardTitle className="text-lg">Sales Pipeline</CardTitle>
               <p className="text-sm text-muted-foreground mt-1">
                 Track your deals through each stage
               </p>
@@ -239,9 +239,8 @@ export default function Dashboard() {
               </Link>
             </Button>
           </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              {pipelineStages.map((stage, index) => {
+          <CardContent className="pt-0">
+            <div className="space-y-4">{pipelineStages.map((stage, index) => {
                 const percentage = (stage.count / stats.totalOpportunities) * 100 || 0;
                 const colors = [
                   'bg-blue-500',
@@ -277,92 +276,95 @@ export default function Dashboard() {
           </CardContent>
         </Card>
 
-        {/* Quick Actions */}
-        <Card className="bg-card border-border">
-          <CardHeader>
-            <CardTitle>Quick Actions</CardTitle>
+        {/* Quick Actions - Takes 3 columns */}
+        <Card className="lg:col-span-3 bg-card border-border">
+          <CardHeader className="pb-4">
+            <CardTitle className="text-lg">Quick Actions</CardTitle>
             <p className="text-sm text-muted-foreground mt-1">
               Common tasks and shortcuts
             </p>
           </CardHeader>
-          <CardContent className="space-y-2">
-            <Button variant="outline" className="w-full justify-start" asChild>
-              <Link to="/leads">
-                <Plus className="h-4 w-4 mr-2" />
-                Add New Lead
-              </Link>
-            </Button>
-            <Button variant="outline" className="w-full justify-start" asChild>
-              <Link to="/contacts">
-                <Users className="h-4 w-4 mr-2" />
-                Add Contact
-              </Link>
-            </Button>
-            <Button variant="outline" className="w-full justify-start" asChild>
-              <Link to="/pipeline">
-                <Target className="h-4 w-4 mr-2" />
-                Create Opportunity
-              </Link>
-            </Button>
-            <Button variant="outline" className="w-full justify-start" asChild>
-              <Link to="/activities">
-                <CheckCircle2 className="h-4 w-4 mr-2" />
-                Schedule Activity
-              </Link>
-            </Button>
+          <CardContent className="pt-0 space-y-2">{[
+              { to: '/leads', icon: Plus, label: 'Add New Lead' },
+              { to: '/contacts', icon: Users, label: 'Add Contact' },
+              { to: '/pipeline', icon: Target, label: 'Create Opportunity' },
+              { to: '/activities', icon: CheckCircle2, label: 'Schedule Activity' },
+            ].map((action, index) => {
+              const Icon = action.icon;
+              return (
+                <Button 
+                  key={index}
+                  variant="outline" 
+                  className="w-full justify-start hover:bg-primary/5 hover:border-primary/50 transition-all" 
+                  asChild
+                >
+                  <Link to={action.to}>
+                    <Icon className="h-4 w-4 mr-2" />
+                    {action.label}
+                  </Link>
+                </Button>
+              );
+            })}
           </CardContent>
         </Card>
+      </div>
 
-        {/* Lead Sources */}
-        <Card className="bg-card border-border">
-          <CardHeader>
-            <CardTitle>Lead Sources</CardTitle>
+      {/* Second Row - Lead Sources and AI Insights */}
+      <div className="grid gap-6 lg:grid-cols-7">
+        {/* Lead Sources - Takes 3 columns */}
+        <Card className="lg:col-span-3 bg-card border-border">
+          <CardHeader className="pb-4">
+            <CardTitle className="text-lg">Lead Sources</CardTitle>
             <p className="text-sm text-muted-foreground mt-1">
               Where your leads come from
             </p>
           </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              {leadSources.map((source, index) => {
-                const percentage = (source.count / stats.totalLeads) * 100 || 0;
-                const colors = [
-                  { bg: 'bg-blue-500/10', text: 'text-blue-400', bar: 'bg-blue-500' },
-                  { bg: 'bg-purple-500/10', text: 'text-purple-400', bar: 'bg-purple-500' },
-                  { bg: 'bg-emerald-500/10', text: 'text-emerald-400', bar: 'bg-emerald-500' },
-                  { bg: 'bg-amber-500/10', text: 'text-amber-400', bar: 'bg-amber-500' },
-                ];
-                const color = colors[index % colors.length];
-                
-                return (
-                  <div key={index} className="space-y-2">
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm font-medium text-foreground">{source.source}</span>
-                      <Badge variant="secondary" className={cn(color.bg, color.text)}>
-                        {source.count}
-                      </Badge>
+          <CardContent className="pt-0">
+            {leadSources.length > 0 ? (
+              <div className="space-y-4">
+                {leadSources.map((source, index) => {
+                  const percentage = (source.count / stats.totalLeads) * 100 || 0;
+                  const colors = [
+                    { bg: 'bg-blue-500/10', text: 'text-blue-400', bar: 'bg-blue-500' },
+                    { bg: 'bg-purple-500/10', text: 'text-purple-400', bar: 'bg-purple-500' },
+                    { bg: 'bg-emerald-500/10', text: 'text-emerald-400', bar: 'bg-emerald-500' },
+                    { bg: 'bg-amber-500/10', text: 'text-amber-400', bar: 'bg-amber-500' },
+                  ];
+                  const color = colors[index % colors.length];
+                  
+                  return (
+                    <div key={index} className="space-y-2">
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm font-medium text-foreground">{source.source}</span>
+                        <Badge variant="secondary" className={cn(color.bg, color.text)}>
+                          {source.count}
+                        </Badge>
+                      </div>
+                      <div className="h-2 bg-muted rounded-full overflow-hidden">
+                        <div
+                          className={cn('h-full rounded-full transition-all duration-500', color.bar)}
+                          style={{ width: `${percentage}%` }}
+                        />
+                      </div>
                     </div>
-                    <div className="h-2 bg-muted rounded-full overflow-hidden">
-                      <div
-                        className={cn('h-full rounded-full transition-all duration-500', color.bar)}
-                        style={{ width: `${percentage}%` }}
-                      />
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+                  );
+                })}
+              </div>
+            ) : (
+              <p className="text-sm text-muted-foreground">No lead sources data available</p>
+            )}
           </CardContent>
         </Card>
 
-        {/* AI Insights */}
-        <Card className="lg:col-span-2 bg-gradient-to-br from-primary/10 to-purple-500/10 border-primary/20">
-          <CardHeader>
+        {/* AI Insights - Takes 4 columns */}
+        <Card className="lg:col-span-4 bg-gradient-to-br from-primary/10 to-purple-500/10 border-primary/20">
+          <CardHeader className="pb-4">
             <div className="flex items-center gap-2">
               <div className="p-2 rounded-lg bg-primary/20">
                 <Brain className="h-5 w-5 text-primary" />
               </div>
               <div>
-                <CardTitle className="flex items-center gap-2">
+                <CardTitle className="flex items-center gap-2 text-lg">
                   AI-Powered Insights
                   <Sparkles className="h-4 w-4 text-primary animate-pulse" />
                 </CardTitle>
@@ -372,39 +374,40 @@ export default function Dashboard() {
               </div>
             </div>
           </CardHeader>
-          <CardContent className="space-y-3">
+          <CardContent className="pt-0">
             {loadingAI ? (
-              <>
-                <Skeleton className="h-20 w-full bg-muted" />
-                <Skeleton className="h-20 w-full bg-muted" />
-                <Skeleton className="h-20 w-full bg-muted" />
-              </>
+              <div className="grid gap-3 md:grid-cols-2">
+                <Skeleton className="h-24 w-full bg-muted" />
+                <Skeleton className="h-24 w-full bg-muted" />
+                <Skeleton className="h-24 w-full bg-muted" />
+                <Skeleton className="h-24 w-full bg-muted" />
+              </div>
             ) : aiInsights ? (
-              <>
+              <div className="grid gap-3 md:grid-cols-2">
                 {aiInsights.insights.map((insight, index) => (
-                  <div key={index} className="flex items-start gap-3 p-3 rounded-lg bg-card/50 border border-border/50">
+                  <div key={`insight-${index}`} className="flex items-start gap-3 p-3 rounded-lg bg-card/50 border border-border/50 hover:border-primary/30 transition-colors">
                     <Zap className="h-5 w-5 text-amber-400 flex-shrink-0 mt-0.5" />
-                    <div>
+                    <div className="flex-1 min-w-0">
                       <p className="text-sm font-medium text-foreground">Insight {index + 1}</p>
-                      <p className="text-xs text-muted-foreground mt-1">{insight}</p>
+                      <p className="text-xs text-muted-foreground mt-1 line-clamp-2">{insight}</p>
                     </div>
                   </div>
                 ))}
                 {aiInsights.recommendations.map((rec, index) => (
-                  <div key={index} className="flex items-start gap-3 p-3 rounded-lg bg-card/50 border border-border/50">
+                  <div key={`rec-${index}`} className="flex items-start gap-3 p-3 rounded-lg bg-card/50 border border-border/50 hover:border-emerald-500/30 transition-colors">
                     <TrendingUp className="h-5 w-5 text-emerald-400 flex-shrink-0 mt-0.5" />
-                    <div>
+                    <div className="flex-1 min-w-0">
                       <p className="text-sm font-medium text-foreground">Recommendation {index + 1}</p>
-                      <p className="text-xs text-muted-foreground mt-1">{rec}</p>
+                      <p className="text-xs text-muted-foreground mt-1 line-clamp-2">{rec}</p>
                     </div>
                   </div>
                 ))}
-              </>
+              </div>
             ) : (
-              <>
+              <div className="grid gap-3 md:grid-cols-2">
                 <div className="flex items-start gap-3 p-3 rounded-lg bg-card/50 border border-border/50">
                   <Zap className="h-5 w-5 text-amber-400 flex-shrink-0 mt-0.5" />
-                  <div>
+                  <div className="flex-1 min-w-0">
                     <p className="text-sm font-medium text-foreground">High-Priority Follow-ups</p>
                     <p className="text-xs text-muted-foreground mt-1">
                       3 opportunities need immediate attention. Follow up today to increase win probability.
@@ -413,7 +416,7 @@ export default function Dashboard() {
                 </div>
                 <div className="flex items-start gap-3 p-3 rounded-lg bg-card/50 border border-border/50">
                   <TrendingUp className="h-5 w-5 text-emerald-400 flex-shrink-0 mt-0.5" />
-                  <div>
+                  <div className="flex-1 min-w-0">
                     <p className="text-sm font-medium text-foreground">Revenue Forecast</p>
                     <p className="text-xs text-muted-foreground mt-1">
                       Based on current pipeline, projected revenue for next month: {formatCurrency(stats.totalRevenue * 1.15)}
@@ -422,14 +425,14 @@ export default function Dashboard() {
                 </div>
                 <div className="flex items-start gap-3 p-3 rounded-lg bg-card/50 border border-border/50">
                   <AlertCircle className="h-5 w-5 text-red-400 flex-shrink-0 mt-0.5" />
-                  <div>
+                  <div className="flex-1 min-w-0">
                     <p className="text-sm font-medium text-foreground">Stale Leads Alert</p>
                     <p className="text-xs text-muted-foreground mt-1">
                       5 leads haven't been contacted in over 7 days. Re-engage to prevent loss.
                     </p>
                   </div>
                 </div>
-              </>
+              </div>
             )}
           </CardContent>
         </Card>
