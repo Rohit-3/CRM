@@ -8,11 +8,12 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Plus, Search, Mail, Phone, Building2, TrendingUp, Trash2 } from 'lucide-react';
+import { Plus, Search, Mail, Phone, Building2, TrendingUp, Trash2, Sparkles } from 'lucide-react';
 import { getLeads, createLead, updateLead, deleteLead } from '@/db/api';
 import { useAuth } from '@/components/auth/AuthProvider';
 import type { Lead } from '@/types/types';
 import { useToast } from '@/hooks/use-toast';
+import { analyzeLeadScore } from '@/services/aiService';
 
 export default function Leads() {
   const [leads, setLeads] = useState<Lead[]>([]);
@@ -126,6 +127,33 @@ export default function Leads() {
       toast({
         title: 'Error',
         description: error.message || 'Failed to delete lead',
+        variant: 'destructive',
+      });
+    }
+  };
+
+  const handleAIScore = async (lead: Lead) => {
+    try {
+      toast({
+        title: 'AI Analysis',
+        description: 'Analyzing lead with AI...',
+      });
+      
+      const result = await analyzeLeadScore(lead);
+      
+      await updateLead(lead.id, { score: result.score });
+      
+      toast({
+        title: 'AI Analysis Complete',
+        description: `New score: ${result.score}/100. ${result.reasoning}`,
+        duration: 8000,
+      });
+      
+      loadLeads();
+    } catch (error: any) {
+      toast({
+        title: 'AI Error',
+        description: error.message || 'Failed to analyze lead',
         variant: 'destructive',
       });
     }
@@ -372,13 +400,23 @@ export default function Leads() {
                       </div>
                     </TableCell>
                     <TableCell className="text-right">
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={() => handleDelete(lead.id)}
-                      >
-                        <Trash2 className="h-4 w-4 text-destructive" />
-                      </Button>
+                      <div className="flex items-center justify-end gap-2">
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => handleAIScore(lead)}
+                          title="AI Score Analysis"
+                        >
+                          <Sparkles className="h-4 w-4 text-primary" />
+                        </Button>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => handleDelete(lead.id)}
+                        >
+                          <Trash2 className="h-4 w-4 text-destructive" />
+                        </Button>
+                      </div>
                     </TableCell>
                   </TableRow>
                 ))}

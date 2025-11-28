@@ -9,6 +9,7 @@ const Accounts = lazy(() => import('./pages/Accounts'));
 const Opportunities = lazy(() => import('./pages/Opportunities'));
 const Tasks = lazy(() => import('./pages/Tasks'));
 const Reports = lazy(() => import('./pages/Reports'));
+const AIInsights = lazy(() => import('./pages/AIInsights'));
 const AdminPanel = lazy(() => import('./pages/AdminPanel'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
@@ -54,6 +55,11 @@ const routes: RouteConfig[] = [
     name: 'Reports',
     path: '/reports',
     element: <Reports />,
+  },
+  {
+    name: 'AI Insights',
+    path: '/ai-insights',
+    element: <AIInsights />,
   },
   {
     name: 'Admin',

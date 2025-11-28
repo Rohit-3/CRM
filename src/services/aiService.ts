@@ -1,0 +1,386 @@
+import type { Lead, Contact, Opportunity, Interaction } from '@/types/types';
+
+const APP_ID = import.meta.env.VITE_APP_ID;
+const AI_API_URL = `https://api-integrations.appmedo.com/${APP_ID}/api-rLob8RdzAOl9/v1beta/models/gemini-2.5-flash:streamGenerateContent?alt=sse`;
+
+interface AIMessage {
+  role: 'user' | 'model';
+  parts: Array<{ text: string }>;
+}
+
+async function callAI(messages: AIMessage[]): Promise<string> {
+  try {
+    const response = await fetch(AI_API_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-App-Id': APP_ID,
+      },
+      body: JSON.stringify({
+        contents: messages,
+      }),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      if (errorData.status === 999) {
+        throw new Error(errorData.msg || 'AI service error');
+      }
+      throw new Error('Failed to get AI response');
+    }
+
+    const reader = response.body?.getReader();
+    const decoder = new TextDecoder();
+    let fullText = '';
+
+    if (reader) {
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+
+        const chunk = decoder.decode(value);
+        const lines = chunk.split('\n');
+
+        for (const line of lines) {
+          if (line.startsWith('data: ')) {
+            try {
+              const jsonStr = line.slice(6);
+              const data = JSON.parse(jsonStr);
+              if (data.candidates?.[0]?.content?.parts?.[0]?.text) {
+                fullText += data.candidates[0].content.parts[0].text;
+              }
+            } catch (e) {
+              // Skip invalid JSON lines
+            }
+          }
+        }
+      }
+    }
+
+    return fullText || 'No response from AI';
+  } catch (error: any) {
+    console.error('AI Service Error:', error);
+    throw error;
+  }
+}
+
+export async function analyzeLeadScore(lead: Lead): Promise<{
+  score: number;
+  reasoning: string;
+  recommendations: string[];
+}> {
+  const prompt = `Analyze this sales lead and provide a score from 0-100 based on their potential value:
+
+Lead Information:
+- Name: ${lead.first_name} ${lead.last_name}
+- Company: ${lead.company || 'Not provided'}
+- Title: ${lead.title || 'Not provided'}
+- Email: ${lead.email || 'Not provided'}
+- Phone: ${lead.phone || 'Not provided'}
+- Source: ${lead.source || 'Unknown'}
+- Current Status: ${lead.status}
+- Current Score: ${lead.score}
+
+Provide your response in this exact JSON format:
+{
+  "score": <number 0-100>,
+  "reasoning": "<brief explanation of the score>",
+  "recommendations": ["<action 1>", "<action 2>", "<action 3>"]
+}`;
+
+  const response = await callAI([
+    {
+      role: 'user',
+      parts: [{ text: prompt }],
+    },
+  ]);
+
+  try {
+    const jsonMatch = response.match(/\{[\s\S]*\}/);
+    if (jsonMatch) {
+      return JSON.parse(jsonMatch[0]);
+    }
+  } catch (e) {
+    // Fallback parsing
+  }
+
+  return {
+    score: lead.score,
+    reasoning: response,
+    recommendations: ['Follow up within 24 hours', 'Research company background', 'Prepare personalized pitch'],
+  };
+}
+
+export async function predictChurnRisk(contact: Contact, interactions: Interaction[]): Promise<{
+  riskLevel: 'low' | 'medium' | 'high';
+  probability: number;
+  reasoning: string;
+  preventionActions: string[];
+}> {
+  const lastInteraction = interactions[0];
+  const interactionCount = interactions.length;
+  const daysSinceLastContact = lastInteraction
+    ? Math.floor((Date.now() - new Date(lastInteraction.interaction_date).getTime()) / (1000 * 60 * 60 * 24))
+    : 999;
+
+  const prompt = `Analyze this customer's churn risk:
+
+Customer: ${contact.first_name} ${contact.last_name}
+Title: ${contact.title || 'Unknown'}
+Department: ${contact.department || 'Unknown'}
+Total Interactions: ${interactionCount}
+Days Since Last Contact: ${daysSinceLastContact}
+Last Interaction Type: ${lastInteraction?.type || 'None'}
+
+Provide churn risk analysis in this JSON format:
+{
+  "riskLevel": "<low|medium|high>",
+  "probability": <number 0-100>,
+  "reasoning": "<explanation>",
+  "preventionActions": ["<action 1>", "<action 2>", "<action 3>"]
+}`;
+
+  const response = await callAI([
+    {
+      role: 'user',
+      parts: [{ text: prompt }],
+    },
+  ]);
+
+  try {
+    const jsonMatch = response.match(/\{[\s\S]*\}/);
+    if (jsonMatch) {
+      return JSON.parse(jsonMatch[0]);
+    }
+  } catch (e) {
+    // Fallback
+  }
+
+  return {
+    riskLevel: daysSinceLastContact > 60 ? 'high' : daysSinceLastContact > 30 ? 'medium' : 'low',
+    probability: Math.min(daysSinceLastContact * 1.5, 100),
+    reasoning: response,
+    preventionActions: ['Schedule check-in call', 'Send value-add content', 'Offer exclusive benefit'],
+  };
+}
+
+export async function suggestNextBestAction(
+  entityType: 'lead' | 'contact' | 'opportunity',
+  entityData: any,
+  recentInteractions: Interaction[]
+): Promise<{
+  action: string;
+  priority: 'high' | 'medium' | 'low';
+  reasoning: string;
+  timing: string;
+}> {
+  const interactionSummary = recentInteractions
+    .slice(0, 5)
+    .map(i => `${i.type}: ${i.subject || 'No subject'} (${new Date(i.interaction_date).toLocaleDateString()})`)
+    .join('\n');
+
+  const prompt = `Based on this ${entityType} data and recent interactions, suggest the next best action:
+
+${entityType.toUpperCase()} Data:
+${JSON.stringify(entityData, null, 2)}
+
+Recent Interactions:
+${interactionSummary || 'No recent interactions'}
+
+Provide recommendation in this JSON format:
+{
+  "action": "<specific action to take>",
+  "priority": "<high|medium|low>",
+  "reasoning": "<why this action>",
+  "timing": "<when to do it>"
+}`;
+
+  const response = await callAI([
+    {
+      role: 'user',
+      parts: [{ text: prompt }],
+    },
+  ]);
+
+  try {
+    const jsonMatch = response.match(/\{[\s\S]*\}/);
+    if (jsonMatch) {
+      return JSON.parse(jsonMatch[0]);
+    }
+  } catch (e) {
+    // Fallback
+  }
+
+  return {
+    action: 'Schedule follow-up call',
+    priority: 'medium',
+    reasoning: response,
+    timing: 'Within 2-3 business days',
+  };
+}
+
+export async function analyzeSentiment(text: string): Promise<{
+  sentiment: 'positive' | 'neutral' | 'negative';
+  score: number;
+  keyPhrases: string[];
+}> {
+  const prompt = `Analyze the sentiment of this text:
+
+"${text}"
+
+Provide analysis in this JSON format:
+{
+  "sentiment": "<positive|neutral|negative>",
+  "score": <number -100 to 100>,
+  "keyPhrases": ["<phrase 1>", "<phrase 2>", "<phrase 3>"]
+}`;
+
+  const response = await callAI([
+    {
+      role: 'user',
+      parts: [{ text: prompt }],
+    },
+  ]);
+
+  try {
+    const jsonMatch = response.match(/\{[\s\S]*\}/);
+    if (jsonMatch) {
+      return JSON.parse(jsonMatch[0]);
+    }
+  } catch (e) {
+    // Fallback
+  }
+
+  return {
+    sentiment: 'neutral',
+    score: 0,
+    keyPhrases: [],
+  };
+}
+
+export async function generateEmailDraft(
+  recipientName: string,
+  purpose: string,
+  context: string
+): Promise<string> {
+  const prompt = `Write a professional business email:
+
+To: ${recipientName}
+Purpose: ${purpose}
+Context: ${context}
+
+Write a concise, professional email (3-4 paragraphs max).`;
+
+  return await callAI([
+    {
+      role: 'user',
+      parts: [{ text: prompt }],
+    },
+  ]);
+}
+
+export async function segmentCustomers(contacts: Contact[]): Promise<{
+  segments: Array<{
+    name: string;
+    description: string;
+    contactIds: string[];
+    characteristics: string[];
+  }>;
+}> {
+  const contactSummary = contacts.slice(0, 20).map(c => ({
+    id: c.id,
+    name: `${c.first_name} ${c.last_name}`,
+    title: c.title,
+    department: c.department,
+  }));
+
+  const prompt = `Analyze these contacts and suggest customer segments:
+
+${JSON.stringify(contactSummary, null, 2)}
+
+Provide segmentation in this JSON format:
+{
+  "segments": [
+    {
+      "name": "<segment name>",
+      "description": "<segment description>",
+      "contactIds": ["<id1>", "<id2>"],
+      "characteristics": ["<trait 1>", "<trait 2>"]
+    }
+  ]
+}`;
+
+  const response = await callAI([
+    {
+      role: 'user',
+      parts: [{ text: prompt }],
+    },
+  ]);
+
+  try {
+    const jsonMatch = response.match(/\{[\s\S]*\}/);
+    if (jsonMatch) {
+      return JSON.parse(jsonMatch[0]);
+    }
+  } catch (e) {
+    // Fallback
+  }
+
+  return {
+    segments: [
+      {
+        name: 'General Contacts',
+        description: 'All contacts',
+        contactIds: contacts.map(c => c.id),
+        characteristics: ['Diverse group'],
+      },
+    ],
+  };
+}
+
+export async function predictOpportunityWinProbability(opportunity: Opportunity): Promise<{
+  probability: number;
+  reasoning: string;
+  riskFactors: string[];
+  strengthFactors: string[];
+}> {
+  const prompt = `Analyze this sales opportunity and predict win probability:
+
+Opportunity: ${opportunity.name}
+Stage: ${opportunity.stage}
+Amount: $${opportunity.amount || 0}
+Current Probability: ${opportunity.probability}%
+Expected Close: ${opportunity.expected_close_date || 'Not set'}
+Status: ${opportunity.status}
+
+Provide analysis in this JSON format:
+{
+  "probability": <number 0-100>,
+  "reasoning": "<explanation>",
+  "riskFactors": ["<risk 1>", "<risk 2>"],
+  "strengthFactors": ["<strength 1>", "<strength 2>"]
+}`;
+
+  const response = await callAI([
+    {
+      role: 'user',
+      parts: [{ text: prompt }],
+    },
+  ]);
+
+  try {
+    const jsonMatch = response.match(/\{[\s\S]*\}/);
+    if (jsonMatch) {
+      return JSON.parse(jsonMatch[0]);
+    }
+  } catch (e) {
+    // Fallback
+  }
+
+  return {
+    probability: opportunity.probability,
+    reasoning: response,
+    riskFactors: ['Timeline uncertainty'],
+    strengthFactors: ['Strong engagement'],
+  };
+}

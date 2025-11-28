@@ -15,6 +15,8 @@ import {
   AlertCircle,
   Calendar,
   Plus,
+  Brain,
+  Sparkles,
 } from 'lucide-react';
 import { getDashboardStats, getPipelineStages, getLeadSources } from '@/db/api';
 import type { DashboardStats, PipelineStage, LeadSourceData } from '@/types/types';
@@ -326,6 +328,44 @@ export default function Dashboard() {
               <Button variant="outline" className="w-full justify-start">
                 <Calendar className="mr-2 h-4 w-4" />
                 Create Task
+              </Button>
+            </Link>
+          </CardContent>
+        </Card>
+
+        <Card className="bg-gradient-to-br from-primary/10 to-primary/5 border-primary/20">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Brain className="h-5 w-5 text-primary" />
+              AI-Powered Insights
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-3">
+            <p className="text-sm text-muted-foreground">
+              Leverage artificial intelligence to optimize your CRM strategy
+            </p>
+            <div className="space-y-2">
+              <div className="flex items-start gap-2 text-sm">
+                <Sparkles className="h-4 w-4 text-primary mt-0.5" />
+                <span>Smart lead scoring & prioritization</span>
+              </div>
+              <div className="flex items-start gap-2 text-sm">
+                <Sparkles className="h-4 w-4 text-primary mt-0.5" />
+                <span>Churn prediction & prevention</span>
+              </div>
+              <div className="flex items-start gap-2 text-sm">
+                <Sparkles className="h-4 w-4 text-primary mt-0.5" />
+                <span>Next-best-action recommendations</span>
+              </div>
+              <div className="flex items-start gap-2 text-sm">
+                <Sparkles className="h-4 w-4 text-primary mt-0.5" />
+                <span>Sentiment analysis & email drafting</span>
+              </div>
+            </div>
+            <Link to="/ai-insights">
+              <Button className="w-full mt-2">
+                <Brain className="mr-2 h-4 w-4" />
+                Explore AI Features
               </Button>
             </Link>
           </CardContent>

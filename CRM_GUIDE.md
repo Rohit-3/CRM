@@ -83,6 +83,38 @@ Make data-driven decisions:
 - **Lead Source Analysis**: Understand which channels generate the most leads
 - **Key Metrics**: Track overall CRM health with comprehensive statistics
 
+### AI Insights (NEW!)
+
+Leverage artificial intelligence to supercharge your CRM:
+
+**AI Analytics**
+- **Smart Lead Scoring**: AI analyzes lead data and provides intelligent scores (0-100) with reasoning and recommendations
+- **Churn Prediction**: Identify customers at risk of leaving with probability scores and prevention strategies
+- **Win Probability**: Predict opportunity success likelihood with strength and risk factor analysis
+- **Customer Segmentation**: Automatically group customers based on behavior, characteristics, and patterns
+
+**AI Assistant**
+- **Email Generator**: AI-powered email drafting for follow-ups, proposals, and outreach
+- **Sentiment Analysis**: Analyze customer communications to detect positive, neutral, or negative sentiment
+- **Key Phrase Extraction**: Identify important themes and topics in customer messages
+
+**AI Predictions**
+- **Next Best Action**: Get AI-recommended actions for leads, contacts, and opportunities
+- **Optimal Timing**: Suggestions on when to follow up for maximum impact
+- **Priority Recommendations**: AI determines which actions should be prioritized
+
+**How to Use AI Features**
+1. Navigate to "AI Insights" from the main menu
+2. Choose the analysis type you need
+3. Click the analysis button (AI will process your data)
+4. Review AI-generated insights and recommendations
+5. Take action based on AI suggestions
+
+**AI in Leads Page**
+- Click the sparkle (✨) icon next to any lead to get instant AI scoring
+- AI will analyze the lead and update the score automatically
+- View reasoning and recommendations in the notification
+
 ### Admin Panel (Administrators Only)
 
 Manage your team and system:
