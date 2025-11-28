@@ -7,7 +7,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import {
   Users, UserPlus, TrendingUp, DollarSign, Target, CheckCircle2,
   AlertCircle, Calendar, Plus, Sparkles, ArrowUpRight, ArrowDownRight,
-  Clock, Zap, Brain, TrendingDown
+  Clock, Zap, Brain, TrendingDown, MessageSquare
 } from 'lucide-react';
 import { getDashboardStats, getPipelineStages, getLeadSources } from '@/db/api';
 import type { DashboardStats, PipelineStage, LeadSourceData } from '@/types/types';
@@ -434,6 +434,72 @@ export default function Dashboard() {
           </CardContent>
         </Card>
       </div>
+
+      {/* AI Features Showcase */}
+      <Card className="bg-gradient-to-br from-purple-500/10 via-blue-500/10 to-cyan-500/10 border-purple-500/20">
+        <CardHeader>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <div className="p-2 bg-purple-500/20 rounded-lg">
+                <Brain className="h-5 w-5 text-purple-400" />
+              </div>
+              <div>
+                <CardTitle className="text-lg">AI-Powered Features</CardTitle>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Explore intelligent automation and insights
+                </p>
+              </div>
+            </div>
+            <Button 
+              onClick={() => window.location.href = '/ai-insights'}
+              variant="outline"
+              className="border-purple-500/30 hover:bg-purple-500/10"
+            >
+              <Sparkles className="h-4 w-4 mr-2" />
+              View All AI Features
+            </Button>
+          </div>
+        </CardHeader>
+        <CardContent>
+          <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-5">
+            <div className="p-4 rounded-lg bg-card/50 border border-border/50 hover:border-purple-500/30 transition-colors">
+              <TrendingUp className="h-5 w-5 text-purple-400 mb-2" />
+              <p className="text-sm font-medium text-foreground">Lead Scoring</p>
+              <p className="text-xs text-muted-foreground mt-1">
+                AI analyzes and scores leads automatically
+              </p>
+            </div>
+            <div className="p-4 rounded-lg bg-card/50 border border-border/50 hover:border-blue-500/30 transition-colors">
+              <AlertCircle className="h-5 w-5 text-blue-400 mb-2" />
+              <p className="text-sm font-medium text-foreground">Churn Prediction</p>
+              <p className="text-xs text-muted-foreground mt-1">
+                Identify at-risk customers early
+              </p>
+            </div>
+            <div className="p-4 rounded-lg bg-card/50 border border-border/50 hover:border-cyan-500/30 transition-colors">
+              <MessageSquare className="h-5 w-5 text-cyan-400 mb-2" />
+              <p className="text-sm font-medium text-foreground">Sentiment Analysis</p>
+              <p className="text-xs text-muted-foreground mt-1">
+                Understand customer emotions in real-time
+              </p>
+            </div>
+            <div className="p-4 rounded-lg bg-card/50 border border-border/50 hover:border-emerald-500/30 transition-colors">
+              <Target className="h-5 w-5 text-emerald-400 mb-2" />
+              <p className="text-sm font-medium text-foreground">Win Probability</p>
+              <p className="text-xs text-muted-foreground mt-1">
+                Predict deal closure likelihood
+              </p>
+            </div>
+            <div className="p-4 rounded-lg bg-card/50 border border-border/50 hover:border-amber-500/30 transition-colors">
+              <Zap className="h-5 w-5 text-amber-400 mb-2" />
+              <p className="text-sm font-medium text-foreground">Next Best Action</p>
+              <p className="text-xs text-muted-foreground mt-1">
+                Get smart recommendations instantly
+              </p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
     </div>
   );
 }

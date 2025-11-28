@@ -3,7 +3,7 @@ import { cn } from '@/lib/utils';
 import { 
   LayoutDashboard, Users, UserPlus, Target, 
   CheckSquare, BarChart3, Settings, Sparkles,
-  ChevronLeft, ChevronRight
+  ChevronLeft, ChevronRight, Brain
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
@@ -13,6 +13,7 @@ interface NavItem {
   path: string;
   icon: React.ElementType;
   badge?: string;
+  highlight?: boolean;
 }
 
 const navItems: NavItem[] = [
@@ -21,6 +22,7 @@ const navItems: NavItem[] = [
   { name: 'Leads', path: '/leads', icon: UserPlus },
   { name: 'Pipeline', path: '/pipeline', icon: Target },
   { name: 'Activities', path: '/activities', icon: CheckSquare },
+  { name: 'AI Insights', path: '/ai-insights', icon: Brain, highlight: true },
   { name: 'Reports', path: '/reports', icon: BarChart3 },
   { name: 'Settings', path: '/settings', icon: Settings },
 ];
@@ -72,20 +74,26 @@ export function Sidebar() {
                     isActive 
                       ? 'bg-primary text-white shadow-lg shadow-primary/20' 
                       : 'text-muted-foreground hover:bg-sidebar-hover hover:text-foreground',
-                    isCollapsed && 'justify-center'
+                    isCollapsed && 'justify-center',
+                    item.highlight && !isActive && 'bg-gradient-to-r from-purple-500/10 to-blue-500/10 border border-purple-500/20'
                   )}
                 >
                   <Icon className={cn(
                     'h-5 w-5 flex-shrink-0',
-                    isActive ? 'text-white' : 'text-muted-foreground group-hover:text-foreground'
+                    isActive ? 'text-white' : item.highlight ? 'text-purple-400' : 'text-muted-foreground group-hover:text-foreground'
                   )} />
                   {!isCollapsed && (
                     <>
-                      <span className="font-medium">{item.name}</span>
+                      <span className={cn('font-medium', item.highlight && !isActive && 'text-purple-400')}>
+                        {item.name}
+                      </span>
                       {item.badge && (
                         <span className="ml-auto text-xs bg-primary/20 text-primary px-2 py-0.5 rounded-full">
                           {item.badge}
                         </span>
+                      )}
+                      {item.highlight && !isActive && (
+                        <Sparkles className="ml-auto h-4 w-4 text-purple-400 animate-pulse" />
                       )}
                     </>
                   )}
