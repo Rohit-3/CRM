@@ -99,7 +99,7 @@ export default function Dashboard() {
           </p>
         </div>
         <div className="flex gap-2">
-          <Link to="/leads/new">
+          <Link to="/leads">
             <Button>
               <Plus className="mr-2 h-4 w-4" />
               New Lead
@@ -304,25 +304,25 @@ export default function Dashboard() {
             <CardTitle>Quick Actions</CardTitle>
           </CardHeader>
           <CardContent className="space-y-2">
-            <Link to="/leads/new">
+            <Link to="/leads">
               <Button variant="outline" className="w-full justify-start">
                 <UserPlus className="mr-2 h-4 w-4" />
                 Add New Lead
               </Button>
             </Link>
-            <Link to="/contacts/new">
+            <Link to="/contacts">
               <Button variant="outline" className="w-full justify-start">
                 <Users className="mr-2 h-4 w-4" />
                 Add New Contact
               </Button>
             </Link>
-            <Link to="/opportunities/new">
+            <Link to="/opportunities">
               <Button variant="outline" className="w-full justify-start">
                 <Target className="mr-2 h-4 w-4" />
                 Create Opportunity
               </Button>
             </Link>
-            <Link to="/tasks/new">
+            <Link to="/tasks">
               <Button variant="outline" className="w-full justify-start">
                 <Calendar className="mr-2 h-4 w-4" />
                 Create Task
