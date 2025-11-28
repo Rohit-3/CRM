@@ -13,12 +13,19 @@ import { getDashboardStats, getPipelineStages, getLeadSources } from '@/db/api';
 import type { DashboardStats, PipelineStage, LeadSourceData } from '@/types/types';
 import { useToast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
+import { generateDashboardInsights } from '@/services/aiService';
 
 export default function Dashboard() {
   const [stats, setStats] = useState<DashboardStats | null>(null);
   const [pipelineStages, setPipelineStages] = useState<PipelineStage[]>([]);
   const [leadSources, setLeadSources] = useState<LeadSourceData[]>([]);
   const [loading, setLoading] = useState(true);
+  const [aiInsights, setAiInsights] = useState<{
+    insights: string[];
+    recommendations: string[];
+    trends: string[];
+  } | null>(null);
+  const [loadingAI, setLoadingAI] = useState(false);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -44,6 +51,33 @@ export default function Dashboard() {
       });
     } finally {
       setLoading(false);
+    }
+  };
+
+  const loadAIInsights = async () => {
+    if (!stats) return;
+    
+    try {
+      setLoadingAI(true);
+      const insights = await generateDashboardInsights({
+        totalLeads: stats.totalLeads,
+        totalOpportunities: stats.totalOpportunities,
+        totalRevenue: stats.totalRevenue,
+        conversionRate: stats.conversionRate,
+      });
+      setAiInsights(insights);
+      toast({
+        title: 'AI Insights Generated',
+        description: 'Fresh insights are ready for you',
+      });
+    } catch (error: any) {
+      toast({
+        title: 'Error',
+        description: error.message || 'Failed to generate AI insights',
+        variant: 'destructive',
+      });
+    } finally {
+      setLoadingAI(false);
     }
   };
 
@@ -133,9 +167,14 @@ export default function Dashboard() {
             <Calendar className="h-4 w-4 mr-2" />
             Last 30 days
           </Button>
-          <Button size="sm" className="gap-2">
-            <Sparkles className="h-4 w-4" />
-            AI Insights
+          <Button 
+            size="sm" 
+            className="gap-2" 
+            onClick={loadAIInsights}
+            disabled={loadingAI || !stats}
+          >
+            <Sparkles className={cn("h-4 w-4", loadingAI && "animate-spin")} />
+            {loadingAI ? 'Generating...' : 'AI Insights'}
           </Button>
         </div>
       </div>
@@ -328,39 +367,70 @@ export default function Dashboard() {
                   <Sparkles className="h-4 w-4 text-primary animate-pulse" />
                 </CardTitle>
                 <p className="text-sm text-muted-foreground mt-1">
-                  Smart recommendations for your business
+                  {aiInsights ? 'Smart recommendations for your business' : 'Click "AI Insights" to generate recommendations'}
                 </p>
               </div>
             </div>
           </CardHeader>
           <CardContent className="space-y-3">
-            <div className="flex items-start gap-3 p-3 rounded-lg bg-card/50 border border-border/50">
-              <Zap className="h-5 w-5 text-amber-400 flex-shrink-0 mt-0.5" />
-              <div>
-                <p className="text-sm font-medium text-foreground">High-Priority Follow-ups</p>
-                <p className="text-xs text-muted-foreground mt-1">
-                  3 opportunities need immediate attention. Follow up today to increase win probability.
-                </p>
-              </div>
-            </div>
-            <div className="flex items-start gap-3 p-3 rounded-lg bg-card/50 border border-border/50">
-              <TrendingUp className="h-5 w-5 text-emerald-400 flex-shrink-0 mt-0.5" />
-              <div>
-                <p className="text-sm font-medium text-foreground">Revenue Forecast</p>
-                <p className="text-xs text-muted-foreground mt-1">
-                  Based on current pipeline, projected revenue for next month: {formatCurrency(stats.totalRevenue * 1.15)}
-                </p>
-              </div>
-            </div>
-            <div className="flex items-start gap-3 p-3 rounded-lg bg-card/50 border border-border/50">
-              <AlertCircle className="h-5 w-5 text-red-400 flex-shrink-0 mt-0.5" />
-              <div>
-                <p className="text-sm font-medium text-foreground">Stale Leads Alert</p>
-                <p className="text-xs text-muted-foreground mt-1">
-                  5 leads haven't been contacted in over 7 days. Re-engage to prevent loss.
-                </p>
-              </div>
-            </div>
+            {loadingAI ? (
+              <>
+                <Skeleton className="h-20 w-full bg-muted" />
+                <Skeleton className="h-20 w-full bg-muted" />
+                <Skeleton className="h-20 w-full bg-muted" />
+              </>
+            ) : aiInsights ? (
+              <>
+                {aiInsights.insights.map((insight, index) => (
+                  <div key={index} className="flex items-start gap-3 p-3 rounded-lg bg-card/50 border border-border/50">
+                    <Zap className="h-5 w-5 text-amber-400 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <p className="text-sm font-medium text-foreground">Insight {index + 1}</p>
+                      <p className="text-xs text-muted-foreground mt-1">{insight}</p>
+                    </div>
+                  </div>
+                ))}
+                {aiInsights.recommendations.map((rec, index) => (
+                  <div key={index} className="flex items-start gap-3 p-3 rounded-lg bg-card/50 border border-border/50">
+                    <TrendingUp className="h-5 w-5 text-emerald-400 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <p className="text-sm font-medium text-foreground">Recommendation {index + 1}</p>
+                      <p className="text-xs text-muted-foreground mt-1">{rec}</p>
+                    </div>
+                  </div>
+                ))}
+              </>
+            ) : (
+              <>
+                <div className="flex items-start gap-3 p-3 rounded-lg bg-card/50 border border-border/50">
+                  <Zap className="h-5 w-5 text-amber-400 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <p className="text-sm font-medium text-foreground">High-Priority Follow-ups</p>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      3 opportunities need immediate attention. Follow up today to increase win probability.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 p-3 rounded-lg bg-card/50 border border-border/50">
+                  <TrendingUp className="h-5 w-5 text-emerald-400 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <p className="text-sm font-medium text-foreground">Revenue Forecast</p>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      Based on current pipeline, projected revenue for next month: {formatCurrency(stats.totalRevenue * 1.15)}
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 p-3 rounded-lg bg-card/50 border border-border/50">
+                  <AlertCircle className="h-5 w-5 text-red-400 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <p className="text-sm font-medium text-foreground">Stale Leads Alert</p>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      5 leads haven't been contacted in over 7 days. Re-engage to prevent loss.
+                    </p>
+                  </div>
+                </div>
+              </>
+            )}
           </CardContent>
         </Card>
       </div>

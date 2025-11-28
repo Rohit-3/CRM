@@ -384,3 +384,153 @@ Provide analysis in this JSON format:
     strengthFactors: ['Strong engagement'],
   };
 }
+
+export async function generateDashboardInsights(data: {
+  totalLeads: number;
+  totalOpportunities: number;
+  totalRevenue: number;
+  conversionRate: number;
+}): Promise<{
+  insights: string[];
+  recommendations: string[];
+  trends: string[];
+}> {
+  const prompt = `Analyze this CRM dashboard data and provide actionable insights:
+
+Dashboard Metrics:
+- Total Leads: ${data.totalLeads}
+- Total Opportunities: ${data.totalOpportunities}
+- Total Revenue: $${data.totalRevenue}
+- Conversion Rate: ${data.conversionRate}%
+
+Provide analysis in this JSON format:
+{
+  "insights": ["<insight 1>", "<insight 2>", "<insight 3>"],
+  "recommendations": ["<action 1>", "<action 2>", "<action 3>"],
+  "trends": ["<trend 1>", "<trend 2>"]
+}`;
+
+  const response = await callAI([
+    {
+      role: 'user',
+      parts: [{ text: prompt }],
+    },
+  ]);
+
+  try {
+    const jsonMatch = response.match(/\{[\s\S]*\}/);
+    if (jsonMatch) {
+      return JSON.parse(jsonMatch[0]);
+    }
+  } catch (e) {
+    // Fallback
+  }
+
+  return {
+    insights: [
+      'Your pipeline is growing steadily',
+      'Conversion rates are within industry standards',
+      'Revenue targets are on track',
+    ],
+    recommendations: [
+      'Focus on high-value opportunities',
+      'Increase follow-up frequency with warm leads',
+      'Implement automated nurture campaigns',
+    ],
+    trends: [
+      'Lead generation trending upward',
+      'Deal velocity improving',
+    ],
+  };
+}
+
+export async function calculateCustomerLifetimeValue(
+  contact: Contact,
+  opportunities: Opportunity[]
+): Promise<{
+  clv: number;
+  reasoning: string;
+  growthPotential: 'high' | 'medium' | 'low';
+}> {
+  const totalRevenue = opportunities
+    .filter(o => o.stage === 'closed_won')
+    .reduce((sum, o) => sum + (o.amount || 0), 0);
+
+  const prompt = `Calculate Customer Lifetime Value (CLV) for this customer:
+
+Customer: ${contact.first_name} ${contact.last_name}
+Title: ${contact.title || 'Unknown'}
+Department: ${contact.department || 'Unknown'}
+Total Won Deals: ${opportunities.filter(o => o.stage === 'closed_won').length}
+Total Revenue: $${totalRevenue}
+Active Opportunities: ${opportunities.filter(o => o.status === 'open').length}
+
+Provide CLV analysis in this JSON format:
+{
+  "clv": <estimated lifetime value in dollars>,
+  "reasoning": "<explanation of calculation>",
+  "growthPotential": "<high|medium|low>"
+}`;
+
+  const response = await callAI([
+    {
+      role: 'user',
+      parts: [{ text: prompt }],
+    },
+  ]);
+
+  try {
+    const jsonMatch = response.match(/\{[\s\S]*\}/);
+    if (jsonMatch) {
+      return JSON.parse(jsonMatch[0]);
+    }
+  } catch (e) {
+    // Fallback
+  }
+
+  return {
+    clv: totalRevenue * 1.5,
+    reasoning: response,
+    growthPotential: totalRevenue > 100000 ? 'high' : totalRevenue > 50000 ? 'medium' : 'low',
+  };
+}
+
+export async function smartSearch(query: string, context: string): Promise<{
+  suggestions: string[];
+  filters: Array<{ field: string; value: string }>;
+  intent: string;
+}> {
+  const prompt = `Analyze this search query and provide smart suggestions:
+
+Query: "${query}"
+Context: ${context}
+
+Provide search analysis in this JSON format:
+{
+  "suggestions": ["<suggestion 1>", "<suggestion 2>", "<suggestion 3>"],
+  "filters": [{"field": "<field name>", "value": "<filter value>"}],
+  "intent": "<what user is trying to find>"
+}`;
+
+  const response = await callAI([
+    {
+      role: 'user',
+      parts: [{ text: prompt }],
+    },
+  ]);
+
+  try {
+    const jsonMatch = response.match(/\{[\s\S]*\}/);
+    if (jsonMatch) {
+      return JSON.parse(jsonMatch[0]);
+    }
+  } catch (e) {
+    // Fallback
+  }
+
+  return {
+    suggestions: [query],
+    filters: [],
+    intent: 'General search',
+  };
+}

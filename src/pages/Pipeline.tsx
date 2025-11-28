@@ -7,11 +7,12 @@ import {
   Plus, Search, DollarSign, Calendar, TrendingUp, 
   MoreVertical, Filter, Sparkles, Target
 } from 'lucide-react';
-import { getOpportunities } from '@/db/api';
+import { getOpportunities, updateOpportunity } from '@/db/api';
 import type { Opportunity } from '@/types/types';
 import { useToast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
 import { Skeleton } from '@/components/ui/skeleton';
+import { CreateOpportunityDialog } from '@/components/dialogs/CreateOpportunityDialog';
 
 const STAGES = [
   { id: 'prospecting', label: 'New', color: 'bg-blue-500', textColor: 'text-blue-400', bgLight: 'bg-blue-500/10' },
@@ -27,6 +28,7 @@ export default function Pipeline() {
   const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(true);
   const [draggedItem, setDraggedItem] = useState<Opportunity | null>(null);
+  const [createDialogOpen, setCreateDialogOpen] = useState(false);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -82,17 +84,28 @@ export default function Pipeline() {
     e.dataTransfer.dropEffect = 'move';
   };
 
-  const handleDrop = (e: React.DragEvent, targetStage: string) => {
+  const handleDrop = async (e: React.DragEvent, targetStage: string) => {
     e.preventDefault();
     if (draggedItem && draggedItem.stage !== targetStage) {
-      const updatedOpportunities = opportunities.map((opp) =>
-        opp.id === draggedItem.id ? { ...opp, stage: targetStage } : opp
-      );
-      setOpportunities(updatedOpportunities);
-      toast({
-        title: 'Success',
-        description: `Moved "${draggedItem.name}" to ${STAGES.find(s => s.id === targetStage)?.label}`,
-      });
+      try {
+        await updateOpportunity(draggedItem.id, { stage: targetStage });
+        
+        const updatedOpportunities = opportunities.map((opp) =>
+          opp.id === draggedItem.id ? { ...opp, stage: targetStage } : opp
+        );
+        setOpportunities(updatedOpportunities);
+        
+        toast({
+          title: 'Success',
+          description: `Moved "${draggedItem.name}" to ${STAGES.find(s => s.id === targetStage)?.label}`,
+        });
+      } catch (error: any) {
+        toast({
+          title: 'Error',
+          description: error.message || 'Failed to update opportunity',
+          variant: 'destructive',
+        });
+      }
     }
     setDraggedItem(null);
   };
@@ -125,7 +138,7 @@ export default function Pipeline() {
             <Filter className="h-4 w-4" />
             Filter
           </Button>
-          <Button size="sm" className="gap-2">
+          <Button size="sm" className="gap-2" onClick={() => setCreateDialogOpen(true)}>
             <Plus className="h-4 w-4" />
             New Deal
           </Button>
@@ -276,6 +289,13 @@ export default function Pipeline() {
           );
         })}
       </div>
+
+      {/* Create Opportunity Dialog */}
+      <CreateOpportunityDialog
+        open={createDialogOpen}
+        onOpenChange={setCreateDialogOpen}
+        onSuccess={loadOpportunities}
+      />
     </div>
   );
 }
