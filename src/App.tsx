@@ -18,7 +18,7 @@ function AppContent() {
         {!isAuthPage && <Sidebar />}
         <div className={`flex-1 flex flex-col ${!isAuthPage ? 'ml-64' : ''}`}>
           {!isAuthPage && <TopBar />}
-          <main className={`flex-grow ${!isAuthPage ? 'mt-16 p-6' : ''}`}>
+          <main className={`flex-grow ${!isAuthPage ? 'mt-16 p-8 max-w-[1920px] mx-auto w-full' : ''}`}>
             <Suspense
               fallback={
                 <div className="flex items-center justify-center min-h-screen">
