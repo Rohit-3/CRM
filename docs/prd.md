@@ -1,17 +1,20 @@
-# Enterprise CRM Platform - Ultimate AI Edition Requirements Document
+# Enterprise CRM Platform - Odoo-Inspired Design Edition Requirements Document
 
 ## 1. Application Overview
 
 ### 1.1 Application Name
-Enterprise CRM Platform - Ultimate AI Edition
+Enterprise CRM Platform - Odoo-Inspired Design Edition
 
 ### 1.2 Application Description
-A next-generation, AI-native Customer Relationship Management system that embodies Apple's design excellence and Google's innovation philosophy. This platform represents the pinnacle of enterprise software, seamlessly integrating Large Language Models (LLM), generative AI, computer vision, and advanced machine learning to deliver an unprecedented level of intelligence, automation, and user experience. Built for organizations that demand the absolute best in technology, design, and performance.\n
+A next-generation, AI-native Customer Relationship Management system featuring Odoo's clean, professional design language combined with advanced AI capabilities. This platform delivers enterprise-grade functionality with an intuitive, modern interface inspired by Odoo CRM's acclaimed user experience. Built for organizations seeking powerful features wrapped in an elegant, efficient design that prioritizes usability and productivity.
+
 ### 1.3 Design Philosophy
-Inspired by Apple's 'Designed by Apple in California' ethos and Google's 'Focus on the user and all else will follow' principle:\n- **Obsessive Attention to Detail**: Every pixel, animation, and interaction meticulously crafted\n- **Invisible Complexity**: Advanced AI working silently behind elegant simplicity
-- **Human-Centered Intelligence**: Technology that amplifies human capability, not replaces it
-- **Consistent Excellence**: Uniform quality across every feature, platform, and interaction
-- **Delightful Experiences**: Moments of joy embedded throughout the user journey
+Inspired by Odoo's design excellence:\n- **Clean & Professional**: Minimalist interface with focus on content and functionality
+- **Efficient Workflows**: Streamlined processes with minimal clicks and intuitive navigation
+- **Contextual Actions**: Smart action buttons and menus that appear when needed
+- **Consistent Patterns**: Uniform design language across all modules and views
+- **Data-First Design**: Information hierarchy that puts data front and center
+- **Responsive & Adaptive**: Seamless experience across all devices and screen sizes
 - **Accessible by Design**: WCAG 2.1 AAA standards with inclusive design principles
 
 ## 2. Core Features
@@ -31,14 +34,13 @@ Inspired by Apple's 'Designed by Apple in California' ethos and Google's 'Focus 
 - Intelligent lead prioritization using multi-factor analysis
 - Dynamic lead routing based on skills, capacity, and success probability
 - Visual lead health indicators with real-time updates
-
-#### 2.1.3 Opportunity / Deal / Pipeline Management
+\n#### 2.1.3Opportunity / Deal / Pipeline Management
 - Advanced deal tracking through configurable stages: prospecting, qualification, proposal, negotiation, closing
-- Visual sales pipeline with AI-powered insights and risk assessment (reference: image.png)
+- Visual sales pipeline with AI-powered insights and risk assessment (Odoo-style Kanban view)
 - Real-time progress monitoring with automated stage management
 - Deal value and probability tracking with ML-based predictions
 - Competitive intelligence integration with win/loss analysis
-- Drag-and-drop deal movement with fluid animations and haptic feedback
+- Drag-and-drop deal movement with smooth animations
 - Pipeline forecasting with confidence intervals and scenario modeling
 
 #### 2.1.4 Interaction / Engagement Tracking
@@ -105,8 +107,7 @@ Inspired by Apple's 'Designed by Apple in California' ethos and Google's 'Focus 
 - Conversation continuity across channels with context preservation
 - Unified inbox with smart filtering, prioritization, and suggested responses
 - Real-time collaboration tools for team-based customer interactions
-
-#### 2.2.2 Territory & Sales Team Management
+\n#### 2.2.2 Territory & Sales Team Management
 - AI-optimized territory allocation with geographic and account-based segmentation
 - Intelligent lead distribution by region, team, skill set, and workload
 - Dynamic workload balancing based on capacity, performance, and deal complexity
@@ -474,452 +475,555 @@ Inspired by Apple's 'Designed by Apple in California' ethos and Google's 'Focus 
 - **Partner/Channel**: Limited access for partner organizations with data isolation and co-selling tools
 - **Customer Success**: Account health monitoring, renewal management, upsell/cross-sell, advocacy programs
 
-## 4. Premium Design System - Apple & Google Inspired
+## 4. Odoo-Inspired Design System
 
 ### 4.1 Design Principles
 
-#### 4.1.1 Apple-Inspired Elements
-- **Clarity**: Typography emphasizes legibility with SF Pro font family, icons are precise and lucid, adornments are subtle and purposeful
-- **Deference**: Fluid motion and crisp interface help people understand and interact with content without distraction
-- **Depth**: Visual layers and realistic motion convey hierarchy and vitality through elevation and shadows
-- **Minimalism**: Every element serves a purpose, no unnecessary decoration or visual noise
-- **Premium Feel**: High-quality visuals, smooth 60fps animations, obsessive attention to detail
-- **Consistency**: Uniform design language across all platforms and touchpoints
-
-#### 4.1.2 Google Material Design Elements
-- **Material Metaphor**: Inspired by physical world and textures, grounded in reality with tactile surfaces
-- **Bold, Graphic, Intentional**: Emphasis on user actions through deliberate color, imagery, typography, and whitespace
-- **Motion Provides Meaning**: Motion respects and reinforces user as prime mover with purposeful animations
-- **Adaptive Design**: Single underlying system across platforms and device sizes with responsive layouts
-- **Elevation & Shadows**: Consistent shadow system to show depth and hierarchy with realistic lighting
-- **Accessibility First**: Design for all users with inclusive patterns and WCAG AAA compliance
+#### 4.1.1 Odoo Design Philosophy
+- **Clean & Minimalist**: Focus on content with minimal visual noise and distractions
+- **Functional Beauty**: Every element serves a purpose, form follows function
+- **Efficient Workflows**: Streamlined processes with contextual actions and smart defaults
+- **Consistent Patterns**: Uniform design language across all modules and views
+- **Professional Aesthetic**: Business-focused design that inspires confidence and trust
+- **Data-Centric**: Information hierarchy that prioritizes data visibility and accessibility
+- **Responsive Design**: Seamless adaptation across devices with mobile-first approach
+- **Accessibility First**: WCAG 2.1 AAA compliance with inclusive design patterns
 
 ### 4.2 Color System
 
-#### 4.2.1 Primary Palette
-- **Primary Blue**: #007AFF (iOS blue) - Trust, intelligence, primary actions, links
-- **Deep Navy**: #1D1D1F (Apple-style dark) - Headers, emphasis, premium feel, dark mode backgrounds
-- **Pure White**: #FFFFFF - Backgrounds, cards, clarity, light mode surfaces
-- **System Gray**: #F5F5F7 (Apple system gray) - Secondary backgrounds, subtle separation, disabled states
-\n#### 4.2.2 Semantic Colors
-- **Success Green**: #34C759 (iOS green) - Positive actions, completed states, AI recommendations, growth metrics
-- **Warning Amber**: #FF9500 (iOS orange) - Attention items, moderate risks, pending actions\n- **Error Red**: #FF3B30 (iOS red) - Critical alerts, errors, high risks, urgent actions
-- **AI Purple**: #AF52DE (iOS purple) - AI-powered features, intelligent insights, premium AI badges, LLM features
-- **Info Blue**: #5AC8FA (iOS teal) - Informational messages, tips, neutral notifications
+#### 4.2.1 Primary Palette (Odoo-Inspired)
+- **Primary Purple**: #714B67 (Odoo signature color) - Primary actions, links, emphasis, brand identity
+- **Deep Navy**: #2C2D3A - Headers, navigation, dark backgrounds, professional tone
+- **Pure White**: #FFFFFF - Main backgrounds, cards, content areas, clean canvas
+- **Light Gray**: #F9F9F9 - Secondary backgrounds, subtle separation, neutral base
+- **Border Gray**: #DDDDDD - Dividers, borders, subtle lines, visual structure
+\n#### 4.2.2Semantic Colors
+- **Success Green**: #28A745 - Positive actions, completed states, success messages, growth indicators
+- **Warning Orange**: #FFC107 - Attention items, warnings, pending states, moderate alerts
+- **Error Red**: #DC3545 - Critical alerts, errors, destructive actions, urgent warnings
+- **Info Blue**: #17A2B8 - Informational messages, tips, neutral notifications, guidance
+- **AI Purple**: #875A7B - AI-powered features, intelligent insights, premium capabilities
 
 #### 4.2.3 Neutral Palette
-- **Text Primary**: #1D1D1F (near black) - Main content, headings, high emphasis text
-- **Text Secondary**: #86868B - Supporting text, metadata, medium emphasis
-- **Text Tertiary**: #C7C7CC - Placeholder text, disabled states, low emphasis
-- **Divider**: #E5E5EA - Subtle separators, borders, hairlines
-- **Background**: #FAFAFA - Page backgrounds, subtle contrast\n
-#### 4.2.4 Data Visualization Colors
-- Accessible color palette meeting WCAG AAA standards with7:1 contrast ratio
-- Distinct hues for charts: #007AFF, #34C759, #FF9500, #AF52DE, #FF3B30, #5AC8FA, #FFCC00, #FF2D55
-- Gradient support for depth and visual interest with smooth transitions
-- Color-blind friendly palettes with pattern overlays
-- Semantic color coding for positive/negative trends
+- **Text Primary**: #212529 - Main content, headings, high emphasis text, body copy
+- **Text Secondary**: #6C757D - Supporting text, metadata, medium emphasis, descriptions
+- **Text Tertiary**: #ADB5BD - Placeholder text, disabled states, low emphasis, hints
+- **Divider**: #DEE2E6 - Subtle separators, borders, hairlines, visual breaks
+- **Background**: #F8F9FA - Page backgrounds, subtle contrast, neutral foundation
 
-### 4.3 Typography System
+#### 4.2.4 Status Colors (Odoo-Style)
+- **Draft**: #6C757D (Gray) - Draft states, unpublished content\n- **In Progress**: #FFC107 (Orange) - Active work, ongoing processes
+- **Done**: #28A745 (Green) - Completed tasks, successful outcomes
+- **Cancelled**: #DC3545 (Red) - Cancelled items, rejected states
+- **Blocked**: #E83E8C (Pink) - Blocked items, waiting states
+\n### 4.3 Typography System
 
-#### 4.3.1 Font Family
-- **Primary**: SF Pro (Apple system font) for iOS/macOS feel with optical sizing
-- **Alternative**: Roboto (Google Material) for Android/Web with variable font support
-- **Fallback**: System font stack (-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif)\n- **Monospace**: SF Mono for code, data, technical content with ligature support
-- **Display**: SF Pro Display for large headings with tighter tracking
+#### 4.3.1 Font Family (Odoo-Inspired)
+- **Primary**:'Lucida Grande', 'Lucida Sans Unicode', Helvetica, Arial, sans-serif (Odoo default stack)
+- **Alternative**: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif
+- **Monospace**: 'Courier New', Courier, monospace - Code, data, technical content
+- **Fallback**: System font stack for optimal performance and native feel
 
-#### 4.3.2 Type Scale (Modular scale with1.250 ratio)
-- **Display Large**: 57px / 64px line height, -0.5px letter spacing - Hero sections, major headings
-- **Display Medium**: 45px / 52px, -0.25px - Section headers, feature titles
-- **Display Small**: 36px / 44px, 0px - Card headers, modal titles
-- **Headline Large**: 32px / 40px, 0px - Page titles, primary headings
-- **Headline Medium**: 28px / 36px, 0px - Section titles, secondary headings
-- **Headline Small**: 24px / 32px, 0px - Subsection titles, card titles
-- **Title Large**: 22px / 28px, 0px - Card titles, list headers, emphasized content
-- **Title Medium**: 16px / 24px, 0.15px - Emphasized body text, button labels
-- **Title Small**: 14px / 20px, 0.1px - Captions, labels, metadata
-- **Body Large**: 16px / 24px, 0.5px - Main content, paragraphs\n- **Body Medium**: 14px / 20px, 0.25px - Secondary content, descriptions
-- **Body Small**: 12px / 16px, 0.4px - Metadata, footnotes, legal text
-\n#### 4.3.3 Font Weights
-- **Light (300)**: Large display text, elegant headings\n- **Regular (400)**: Body text, standard content, default weight
-- **Medium (500)**: Emphasized text, button labels, navigation\n- **Semibold (600)**: Subheadings, important labels, active states
-- **Bold (700)**: Headings, critical information, strong emphasis
-- **Heavy (800)**: Display headings, hero text (used sparingly)
+#### 4.3.2 Type Scale (Odoo-Style)
+- **Display**: 28px / 36px line height, 600weight - Page titles, major headings
+- **Heading1**: 24px / 32px, 600 weight - Section headers, primary headings
+- **Heading 2**: 20px / 28px, 600 weight - Subsection titles, secondary headings
+- **Heading 3**: 18px / 24px, 600 weight - Card titles, tertiary headings
+- **Body Large**: 16px / 24px, 400 weight - Main content, emphasized text
+- **Body**: 14px / 20px, 400 weight - Standard body text, default content
+- **Body Small**: 13px / 18px, 400 weight - Secondary content, descriptions
+- **Caption**: 12px / 16px, 400 weight - Metadata, labels, small text
+- **Tiny**: 11px / 14px, 400 weight - Footnotes, legal text (used sparingly)
 
-### 4.4 Spacing & Layout System
+#### 4.3.3 Font Weights\n- **Regular (400)**: Body text, standard content, default weight
+- **Medium (500)**: Emphasized text, button labels, navigation items
+- **Semibold (600)**: Headings, important labels, strong emphasis
+- **Bold (700)**: Critical information, alerts (used sparingly)
+\n### 4.4 Spacing & Layout System
 
-#### 4.4.1 Spacing Scale (8px base unit with golden ratio)
-- **2px**: Hairline spacing, icon padding\n- **4px**: Tight spacing, compact layouts
-- **8px**: Default spacing, list item padding
-- **12px**: Small gaps, form field spacing
-- **16px**: Standard spacing, card padding, comfortable layouts
-- **24px**: Medium spacing, section gaps, card margins
+#### 4.4.1 Spacing Scale (8px base unit)
+- **4px**: Tight spacing, compact elements, icon padding
+- **8px**: Default spacing, list items, form fields
+- **12px**: Small gaps, card internal spacing\n- **16px**: Standard spacing, comfortable layouts, section padding
+- **24px**: Medium spacing, card margins, section gaps
 - **32px**: Large spacing, major sections, page padding
-- **48px**: Extra large spacing, hero sections\n- **64px**: Hero spacing, dramatic separation, landing pages
-- **96px**: Maximum spacing, section dividers\n
-#### 4.4.2 Grid System
-- **12-column responsive grid** with fluid containers:\n  - Mobile (320-767px): 4 columns, 16px margins, 8px gutters
-  - Tablet (768-1023px): 8 columns, 24px margins, 16px gutters
-  - Desktop (1024-1439px): 12 columns, 32px margins, 24px gutters
-  - Large Desktop (1440px+): 12 columns, 48px margins, 32px gutters
-- **Max-width constraints**: 1440px for optimal readability
-- **Consistent gutters** with responsive scaling
-- **Subgrid support** for nested layouts
+- **48px**: Extra large spacing, hero sections, dramatic separation
 
-#### 4.4.3 Component Sizing
-- **Touch Targets**: Minimum 44x44px (iOS standard), 48x48px recommended for primary actions
-- **Button Heights**: Small (32px), Medium (40px), Large (48px), Extra Large (56px)
-- **Input Heights**: 40px (mobile), 44px (tablet), 48px (desktop)
-- **Card Padding**: 16px (mobile), 24px (tablet), 32px (desktop)
-- **Icon Sizes**: 16px, 20px, 24px, 32px, 48px, 64px
-\n### 4.5 Visual Elements
+#### 4.4.2 Grid System (Odoo-Style)
+- **Fluid Layout**: Full-width containers with responsive breakpoints
+- **Content Width**: Max 1140px for optimal readability on large screens
+- **Sidebar**: Fixed 220px width (collapsible to 64px icon-only mode)
+- **Gutters**: 16px between columns, 24px on larger screens
+- **Responsive Breakpoints**:
+  - Mobile: < 768px (single column, stacked layout)
+  - Tablet: 768px - 991px (2-column grid, collapsible sidebar)
+  - Desktop: 992px - 1199px (multi-column, full sidebar)
+  - Large:≥ 1200px (spacious layout, max-width constraints)
 
-#### 4.5.1 Elevation & Shadows (Apple-inspired with subtle depth)
-- **Level 0** (Flat): No shadow, background elements, disabled states
-- **Level 1** (Raised): 01px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24) - Cards, buttons, inputs
-- **Level 2** (Elevated): 0 3px 6px rgba(0,0,0,0.15), 0 2px 4px rgba(0,0,0,0.12) - Dropdowns, tooltips, hover states
-- **Level 3** (Floating): 0 10px 20px rgba(0,0,0,0.15), 0 3px 6px rgba(0,0,0,0.10) - Modals, popovers, navigation
-- **Level 4** (Overlay): 0 15px 25px rgba(0,0,0,0.15), 0 5px 10px rgba(0,0,0,0.05) - Dialogs, sheets, overlays
-- **Level 5** (Maximum): 0 20px 40px rgba(0,0,0,0.2), 0 8px 16px rgba(0,0,0,0.1) - Hero elements, FAB
+#### 4.4.3 Component Sizing (Odoo Standards)
+- **Touch Targets**: Minimum 32px height for buttons and interactive elements
+- **Button Heights**: Small (28px), Medium (32px), Large (36px)
+- **Input Heights**: 32px (consistent across all form inputs)
+- **Table Row Height**: 40px (comfortable for data scanning)
+- **Card Padding**: 16px (consistent internal spacing)
+- **Icon Sizes**: 14px (inline), 16px (buttons), 18px (navigation), 24px (features)
 
-#### 4.5.2 Border Radius (Consistent with Apple's design language)
-- **Extra Small**: 2px - Badges, tags\n- **Small**: 4px - Buttons, inputs, small cards
-- **Medium**: 8px - Standard cards, containers, chips
-- **Large**: 12px - Large cards, modals, panels
-- **Extra Large**: 16px - Hero cards, feature sections
-- **2X Large**: 24px - Prominent cards, special elements
-- **Circular**: 50% - Avatars, icon buttons, badges, FAB
+### 4.5 Visual Elements
 
-#### 4.5.3 Borders
-- **Hairline**: 0.5px - Subtle dividers (iOS style), table borders
-- **Thin**: 1px - Standard borders, separators, card outlines
-- **Medium**: 2px - Emphasized borders, focus states, active elements
-- **Thick**: 4px - Strong emphasis, selected states, progress indicators
-\n### 4.6 Iconography
+#### 4.5.1 Elevation & Shadows (Odoo-Style)
+- **Level 0** (Flat): No shadow, inline elements, disabled states
+- **Level 1** (Subtle): 01px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.08) - Cards, buttons, inputs
+- **Level 2** (Raised): 0 2px 6px rgba(0,0,0,0.15), 0 1px 3px rgba(0,0,0,0.10) - Dropdowns, tooltips, hover states
+- **Level 3** (Floating): 0 4px 12px rgba(0,0,0,0.15), 0 2px 6px rgba(0,0,0,0.10) - Modals, popovers, dialogs
+- **Level 4** (Overlay): 0 8px 24px rgba(0,0,0,0.15), 0 4px 12px rgba(0,0,0,0.10) - Sheets, overlays, maximum elevation
 
-#### 4.6.1 Icon System
-- **SF Symbols** style for iOS feel (outlined, filled, and multicolor variants)
-- **Material Icons** for Android/Web consistency (outlined, filled, rounded, sharp, two-tone)
-- **Sizes**: 16px (inline), 20px (buttons), 24px (navigation), 32px (features), 48px (hero), 64px (illustrations)
-- **Stroke Width**: 1.5px for outlined icons, 2px for emphasis
-- **Optical Alignment**: Icons aligned to pixel grid for crispness at all sizes
-- **Consistent Style**: Single icon family throughout app with cohesive visual language
+#### 4.5.2 Border Radius (Odoo-Style)
+- **None**: 0px - Tables, strict layouts, data grids
+- **Small**: 2px - Buttons, inputs, tags, badges
+- **Medium**: 4px - Cards, containers, panels (Odoo standard)
+- **Large**: 6px - Modals, large cards (used sparingly)
+- **Circular**: 50% - Avatars, icon buttons, status indicators
 
-#### 4.6.2 Icon Usage
-- **Navigation**: 24px icons with labels, active state with fill
-- **Actions**: 20px icons in buttons, 16px in compact buttons
-- **Status**: 16px icons inline with text, color-coded for meaning
-- **Features**: 32-48px icons for feature highlights and empty states
-- **Illustrations**: 64px+ icons for hero sections and onboarding
-- **Accessibility**: All icons have text labels or ARIA labels
+#### 4.5.3 Borders (Odoo-Style)
+- **Standard**: 1px solid #DDDDDD - Default borders, separators, card outlines
+- **Emphasized**: 2px solid - Focus states, active elements, selected items
+- **Subtle**: 1px solid #E9ECEF - Very subtle dividers, light separation
+\n### 4.6 Iconography (Odoo-Style)
+\n#### 4.6.1 Icon System
+- **Font Awesome 5** (Odoo standard) - Comprehensive icon library with consistent style
+- **Sizes**: 14px (inline), 16px (buttons), 18px (navigation), 24px (features), 32px (illustrations)
+- **Style**: Solid for primary actions, Regular for secondary, Light for subtle elements
+- **Color**: Inherit text color by default, semantic colors for status
+- **Alignment**: Vertically centered with text, consistent spacing
 
-### 4.7 Motion & Animation
+#### 4.6.2 Icon Usage (Odoo Patterns)
+- **Navigation**: 18px icons with text labels, active state with color change
+- **Actions**: 16px icons in buttons, 14px in compact buttons, left-aligned with text
+- **Status**: 14px icons inline with text, color-coded for meaning
+- **Empty States**: 48px icons for illustrations and guidance
+- **Accessibility**: All icons have text labels or ARIA labels for screen readers
 
-#### 4.7.1 Animation Principles (Apple-inspired)
-- **Purposeful**: Every animation serves a functional purpose and guides user attention
-- **Quick**: Animations complete in 200-400ms for responsiveness
-- **Natural**: Easing curves mimic physical motion with realistic acceleration\n- **Responsive**: Immediate feedback to user actions (<100ms)
-- **Subtle**: Animations enhance, not distract from content
-- **Consistent**: Uniform motion language across all interactions
-- **Interruptible**: Animations can be interrupted by user actions
+### 4.7 Motion & Animation (Odoo-Style)
+\n#### 4.7.1 Animation Principles
+- **Subtle & Purposeful**: Animations enhance usability without distraction
+- **Quick & Responsive**: Fast transitions (150-250ms) for immediate feedback
+- **Consistent**: Uniform timing and easing across all interactions
+- **Performance**: GPU-accelerated transforms for smooth 60fps\n- **Respectful**: Honor prefers-reduced-motion for accessibility
 
-#### 4.7.2 Timing Functions (Bezier curves)
-- **Standard Easing**: cubic-bezier(0.4, 0.0, 0.2, 1) - Default transitions, balanced motion
-- **Deceleration**: cubic-bezier(0.0, 0.0, 0.2, 1) - Elements entering screen, appearing
-- **Acceleration**: cubic-bezier(0.4, 0.0, 1, 1) - Elements exiting screen, disappearing
-- **Sharp**: cubic-bezier(0.4, 0.0, 0.6, 1) - Quick, decisive actions, toggles
-- **Spring**: Custom spring physics for natural, bouncy motion (iOS style)
-
-#### 4.7.3 Animation Durations
-- **Instant**: 100ms - Hover states, simple transitions, color changes
-- **Quick**: 200ms - Button presses, toggles, checkboxes
-- **Standard**: 300ms - Card expansions, page transitions, modals
-- **Deliberate**: 400ms - Complex animations, drawer slides, sheet appearances
-- **Slow**: 500ms - Hero animations, onboarding (used sparingly)
-\n#### 4.7.4 Motion Patterns
+#### 4.7.2 Timing Functions
+- **Standard**: ease-in-out - Default transitions, balanced motion
+- **Ease-Out**: cubic-bezier(0, 0, 0.2, 1) - Elements entering, appearing
+- **Ease-In**: cubic-bezier(0.4, 0, 1, 1) - Elements exiting, disappearing
+\n#### 4.7.3 Animation Durations
+- **Instant**: 100ms - Hover states, simple transitions
+- **Quick**: 150ms - Button presses, toggles, checkboxes
+- **Standard**: 200ms - Dropdowns, tooltips, most transitions
+- **Deliberate**: 250ms - Modals, drawers, complex animations
+\n#### 4.7.4 Motion Patterns (Odoo-Style)
 - **Fade**: Opacity transitions for appearing/disappearing elements
-- **Slide**: Directional movement for navigation, drawers, sheets
-- **Scale**: Size changes for emphasis, modals, zoom effects
-- **Morph**: Shape transformations for state changes, icon animations
-- **Ripple**: Material Design touch feedback with expanding circle
-- **Spring**: Bouncy, natural motion for delightful interactions (iOS style)
-- **Parallax**: Depth effect with layered motion for hero sections
-- **Reveal**: Progressive disclosure with staggered animations
+- **Slide**: Vertical/horizontal movement for dropdowns, drawers, sheets
+- **Scale**: Subtle size changes for emphasis (scale0.98to 1.0)
+- **Highlight**: Background color transitions for selection and hover
+\n### 4.8 Component Design (Odoo-Inspired)
 
-### 4.8 Component Design
+#### 4.8.1 Buttons (Odoo-Style)
+- **Primary**: Filled with primary color (#714B67), white text, 2px radius, medium weight
+- **Secondary**: White background, primary border (1px), primary text, 2px radius\n- **Success**: Filled with success green (#28A745), white text, for positive actions
+- **Danger**: Filled with error red (#DC3545), white text, for destructive actions
+- **Link**: Text-only, primary color, no border, underline on hover
+- **Icon Buttons**: Square,32x32px, subtle background on hover,16px icon\n- **States**: Default, Hover (slightly darker), Active (pressed), Disabled (50% opacity, not-allowed cursor)
+- **Button Groups**: Connected buttons with shared borders, no gap\n
+#### 4.8.2 Cards (Odoo-Style)
+- **Standard Cards**: White background, 1px border (#DDDDDD), 4px radius, 16px padding
+- **No Shadow**: Odoo uses borders instead of shadows for cleaner look
+- **Header**: Optional card header with border-bottom, 14px bold text
+- **Content**: Clear hierarchy with consistent16px padding
+- **Footer**: Optional footer with border-top, right-aligned actions
+- **Interactive Cards**: Hover state with subtle background change (#F9F9F9), cursor pointer
 
-#### 4.8.1 Buttons (Apple-inspired with Material touches)
-- **Primary**: Filled with primary color (#007AFF), white text, 8px radius, medium shadow, bold weight
-- **Secondary**: Outlined with primary color, colored text (#007AFF), 8px radius, no fill\n- **Tertiary**: Text-only, colored text, no border, subtle hover background
-- **Destructive**: Filled with error color (#FF3B30), white text, for dangerous actions
-- **Icon Buttons**: Circular, 40x40px, subtle background on hover, 20px icon\n- **Floating Action Button**: Circular, 56x56px, elevated shadow (Level 5), primary color, 24px icon
-- **States**: Default, Hover (+10% brightness), Active (pressed, -10% brightness), Disabled (40% opacity)
-- **Loading State**: Spinner replaces text, button disabled during loading
+#### 4.8.3 Forms & Inputs (Odoo-Style)
+- **Text Inputs**: 32px height, 2px radius, 1px border (#DDDDDD), 8px horizontal padding
+- **Focus State**: 2px primary color border (#714B67), no glow or shadow
+- **Labels**: Above input, 14px, medium weight (500),4px bottom margin, #212529 color
+- **Helper Text**: Below input, 12px, secondary color (#6C757D), 4px top margin\n- **Error State**: Red border (#DC3545), red helper text, error icon inside input
+- **Success State**: Green border (#28A745), checkmark icon inside input
+- **Disabled State**: Light gray background (#E9ECEF), 50% opacity, not-allowed cursor
+- **Placeholder**: Tertiary color (#ADB5BD), italic style\n- **Required Fields**: Red asterisk (*) next to label\n
+#### 4.8.4 Navigation (Odoo-Style)
+\n##### Top Navigation Bar
+- **Height**: 46px (Odoo standard), fixed positioning, white background
+- **Logo**: Left-aligned, 32px height, clickable home link
+- **App Switcher**: Grid icon (18px) for switching between modules
+- **Module Tabs**: Horizontal tabs with 14px text, active state with bottom border (3px, primary color)
+- **Search Bar**: Center-aligned, expandable, 32px height, 2px radius, icon inside
+- **User Menu**: Right-aligned, avatar (32px circular), dropdown on click
+- **Notifications**: Bell icon with badge for count, dropdown panel
+- **Settings**: Gear icon for quick settings access
+- **Border**: 1px bottom border (#DDDDDD) for subtle separation
 
-#### 4.8.2 Cards (Material-inspired with Apple refinement)
-- **Elevated Cards**: White background, Level 1 shadow, 12px radius, 24px padding, smooth hover transition
-- **Outlined Cards**: 1px border (#E5E5EA), no shadow, 12px radius, 24px padding\n- **Interactive Cards**: Hover state with Level 2 shadow, scale(1.02) transform, cursor pointer
-- **Content**: Clear hierarchy with title (Title Large), body (Body Medium), actions (buttons)
-- **Spacing**: 16px between card elements, 24px padding on all sides
-- **Media**: Images with 12px radius (top) or 8px radius (inline)
+##### Sidebar Navigation (Odoo-Style)
+- **Width**: 220px (expanded), 64px (collapsed), smooth transition
+- **Background**: White with subtle border-right (1px, #DDDDDD)
+- **Menu Items**: 36px height, 18px icon +14px text, left-aligned
+- **Hover State**: Light gray background (#F9F9F9), no border
+- **Active State**: Primary color background (#714B67), white text and icon
+- **Sections**: Grouped by function, section headers (12px, uppercase, #6C757D)
+- **Collapsible**: Toggle button at bottom, icon-only mode shows tooltips on hover
+- **Submenu**: Indented items (32px left padding), slightly smaller text (13px)
 
-#### 4.8.3 Forms & Inputs (iOS-inspired with Material validation)
-- **Text Inputs**: 44px height, 8px radius, 1px border (#E5E5EA), 12px horizontal padding
-- **Focus State**: 2px primary color border (#007AFF), subtle glow (000 4px rgba(0,122,255,0.1))
-- **Labels**: Above input, 14px, medium weight (500), 8px bottom margin, #1D1D1F color
-- **Helper Text**: Below input, 12px, secondary color (#86868B), 4px top margin\n- **Error State**: Red border (#FF3B30), red helper text, error icon (16px) inside input
-- **Success State**: Green border (#34C759), checkmark icon (16px) inside input
-- **Disabled State**: Gray background (#F5F5F7),40% opacity, not-allowed cursor
-- **Placeholder**: Tertiary color (#C7C7CC), italic style\n
-#### 4.8.4 Navigation (Hybrid Apple/Material approach)
-- **Top Navigation**: 64px height, white background, subtle bottom shadow (Level 1), sticky positioning
-- **Sidebar**: 240px width (collapsed: 64px), smooth300ms expand/collapse, Level 2 shadow
-- **Tabs**: Underline indicator (2px, primary color), smooth slide animation (300ms),48px height
-- **Breadcrumbs**: Chevron separators (›), clickable path, 14px text, secondary color
-- **Pagination**: Rounded buttons (8px radius), current page emphasized (filled), 32px height
-- **Bottom Navigation** (mobile): 56px height, 5items max, icon + label, active state with color
-\n#### 4.8.5 Data Display
-- **Tables**: Alternating row colors (#FAFAFA), hover highlight (#F5F5F7), sortable headers with icons
-- **Lists**: 56px row height, hairline dividers (0.5px), swipe actions on mobile
-- **Chips**: Rounded pills (16px radius), 32px height, removable with X icon (16px)
-- **Badges**: Small circular indicators (20px size), positioned absolutely, number or dot
-- **Avatars**: Circular, multiple sizes (24px, 32px, 40px, 48px, 64px), fallback initials with colored background
-- **Progress Bars**:4px height, rounded ends, animated fill, color-coded by status
-\n#### 4.8.6 Feedback Elements
-- **Toasts**: Bottom-center, 4s duration, slide-up animation (300ms), 8px radius, Level 3 shadow
-- **Snackbars**: Bottom-left, action button, auto-dismiss (6s) or manual close, 4px radius\n- **Alerts**: Modal dialogs, centered, max400px width, clear title and actions, Level 4 shadow
-- **Progress Indicators**: Linear (top of page, 4px height), circular (centered, 40px size)\n- **Skeletons**: Animated placeholders (shimmer effect), match content shape, gray gradient
-- **Empty States**: Friendly illustration (64px icon), encouraging message, clear CTA button
+##### Breadcrumbs (Odoo-Style)
+- **Location**: Below top nav, 32px height, left-aligned
+- **Separators**: Forward slash (/) or chevron (›), 14px, secondary color
+- **Links**: Primary color, 14px, hover underline
+- **Current Page**: Bold, not clickable, primary text color
+\n#### 4.8.5 Data Display (Odoo-Style)
 
-#### 4.8.7 Modals & Overlays
-- **Dialogs**: Centered, max 600px width, Level 4 shadow, 16px radius,32px padding
-- **Sheets**: Slide from bottom (mobile), side (desktop), draggable handle (4px x 32px), Level 4 shadow
-- **Popovers**: Contextual, arrow pointing to trigger (8px), Level 3 shadow, 8px radius
-- **Tooltips**: Small, dark background (#1D1D1F), white text, 4px radius, 8px padding,12px text
-- **Backdrop**: Semi-transparent dark overlay (rgba(0,0,0,0.5)), blur effect (8px) on supported browsers
-- **Animations**: Fade + scale for dialogs, slide for sheets, fade for tooltips
+##### Tables (Odoo-Style)
+- **Header**: Light gray background (#F9F9F9), 14px bold text, 40px height, border-bottom (2px, #DDDDDD)
+- **Rows**: 40px height, 1px bottom border (#E9ECEF), hover background (#F9F9F9)\n- **Cells**: 8px horizontal padding, 14px text, left-aligned (text), right-aligned (numbers)
+- **Sortable Headers**: Clickable with sort icon (14px), active column highlighted
+- **Striped Rows**: Optional alternating row colors for better readability
+- **Responsive**: Horizontal scroll on mobile, card view for narrow screens
+- **Selection**: Checkbox column (left), selected row with light primary background
+- **Actions**: Right-aligned action buttons or dropdown menu (ellipsis icon)
 
-### 4.9 Dashboard & Pipeline Design (Inspired by image.png)
+##### Lists (Odoo-Style)
+- **List Items**: 40px height, 1px bottom border (#E9ECEF), 12px horizontal padding
+- **Hover State**: Light gray background (#F9F9F9), cursor pointer
+- **Selected State**: Light primary background (#F3E5F5), left border (3px, primary color)
+- **Icons**: 18px left-aligned icon, 8px right margin
+- **Actions**: Right-aligned, visible on hover or always visible for touch devices
+\n##### Kanban View (Odoo-Style Pipeline)
+- **Column Layout**: Horizontal scrollable stages, 280px column width, 16px gap
+- **Column Headers**: Stage name (14px bold), count badge (12px, gray background), + button (24px)
+- **Column Background**: Light gray (#F9F9F9), 1px border (#DDDDDD), 4px radius
+- **Cards**: White background, 1px border (#DDDDDD), 4px radius, 12px padding, 8px margin
+- **Card Content**: Title (14px bold), metadata (12px, secondary color), tags, avatar
+- **Drag Handle**: Visible on hover, 6-dot icon (14px, tertiary color), cursor grab
+- **Drop Zone**: Highlighted withdashed border (2px, primary color) when dragging
+- **Empty State**: Centered illustration (48px icon), encouraging message, + button
+- **Smooth Animations**: Card movement (200ms ease-out), column scroll (smooth behavior)
 
-#### 4.9.1 Pipeline Kanban View
-- **Column Layout**: Horizontal scrollable stages (New, Qualified, Proposition, Won), smooth scroll\n- **Column Headers**: Stage name (Title Large, bold), deal count (Body Small, secondary), total value (Title Medium, primary color), + button (32px, circular)
-- **Column Styling**: Dark background (#2C2C2E), subtle borders (1px, #38383A), 12px radius, 16px padding
-- **Deal Cards**: White cards, 12px radius, Level 1 shadow, 16px padding, drag-and-drop enabled with visual feedback
-- **Empty State**: Friendly illustration (image.png style), encouraging message ('Create an opportunity to start playing with your pipeline'), clear CTA\n- **Smooth Animations**: Card movement (300ms spring), column expansion (200ms), drag feedback (scale 1.05, Level 3 shadow)
-- **Responsive**: Vertical stacking on mobile, horizontal scroll on tablet/desktop
+##### Chips & Tags (Odoo-Style)\n- **Chips**: Rounded pills (12px radius), 24px height, 8px horizontal padding, 12px text
+- **Colors**: Light backgrounds with matching text color (e.g., light blue bg + dark blue text)
+- **Removable**: X icon (12px) on right, 4px left margin, hover state
+- **Status Tags**: Color-coded by status (draft, in progress, done, cancelled)
+\n##### Badges (Odoo-Style)
+- **Notification Badge**: Small circular (18px), positioned absolutely, number or dot
+- **Status Badge**: Inline with text, 20px height, 6px horizontal padding, 11px text
+- **Colors**: Semantic colors for different statuses (success, warning, error, info)
+\n##### Avatars (Odoo-Style)\n- **Sizes**: 24px (small), 32px (medium), 40px (large), 64px (profile)\n- **Shape**: Circular (Odoo standard)\n- **Fallback**: Initials with colored background (generated from name)
+- **Status Indicator**: Small dot (8px) on bottom-right for online/offline status
 
-#### 4.9.2 Deal Cards
-- **Compact Design**: Company name (Title Medium, bold), deal value (Title Large, primary color), probability (Body Small, badge), next action (Body Small, secondary)
-- **Visual Indicators**: Color-coded priority (left border, 4px), AI score badge (purple, 20px), health icon (16px, color-coded)
-- **Quick Actions**: Hover reveals edit, view, delete icons (20px, secondary color), smooth fade-in (200ms)
-- **Drag Handle**: Subtle grip icon (16px, tertiary color), appears on hover, cursor grab
-- **Responsive**: Stacks vertically on mobile, maintains44px touch targets, swipe actions\n- **Avatar**: 32px circular avatar for assigned rep, fallback initials\n
-#### 4.9.3 Top Navigation Bar
-- **App Logo**: Left-aligned (32px height), clickable home link, brand colors
-- **Module Tabs**: Sales, Reporting, Configuration (Title Medium), active state underlined (2px, primary color), hover background
-- **Search Bar**: Center-aligned, expandable (240px → 400px), 40px height, 8px radius, filter dropdown (icon button)
-- **User Actions**: Notifications bell (badge for count), user avatar (40px), settings gear (20px icons)\n- **Sticky**: Remains visible on scroll, subtle shadow (Level 1) when scrolled, smooth transition
-- **Responsive**: Hamburger menu on mobile, drawer navigation\n
-#### 4.9.4 Sidebar Navigation
-- **Collapsible**: Toggle between full (240px) and icon-only (64px), smooth300ms transition
-- **Menu Items**: Icon (24px) + label (Body Medium), hover highlight (#F5F5F7), active state background (#E5E5EA)
-- **Sections**: Grouped by function (Pipeline, Leads, Contacts, Reports), section headers (Body Small, uppercase, secondary)\n- **Quick Actions**: 'New' button (primary, filled), 'Generate Leads' button (secondary, outlined), prominent placement
-- **Smooth Transition**: 300ms ease for expand/collapse, icon rotation for toggle button
-- **Responsive**: Drawer on mobile (slide from left), persistent on desktop
+##### Progress Indicators (Odoo-Style)
+- **Progress Bar**: 4px height, rounded ends (2px), light gray background, primary color fill
+- **Percentage**: Optional text label (12px) on right side
+- **Striped**: Animated stripes for ongoing processes
+- **Color-Coded**: Semantic colors based on progress (red < 30%, orange30-70%, green > 70%)
 
-### 4.10 Responsive Design
+#### 4.8.6 Feedback Elements (Odoo-Style)
 
-#### 4.10.1 Breakpoints (Mobile-first approach)
-- **Mobile**: 320px - 767px (single column, stacked layout, bottom navigation)
-- **Tablet**: 768px - 1023px (2-column grid, collapsible sidebar, split view)
-- **Desktop**: 1024px - 1439px (3-column grid, full sidebar, multi-panel layout)
-- **Large Desktop**: 1440px+ (4-column grid, spacious layout, max-width 1920px)
+##### Notifications (Odoo-Style)
+- **Toast**: Top-right corner, 300px width, 4px radius, Level 2 shadow, 4s auto-dismiss
+- **Types**: Success (green), Warning (orange), Error (red), Info (blue)
+- **Content**: Icon (18px) + message (14px) + close button (16px)
+- **Animation**: Slide-in from right (200ms), fade-out on dismiss (150ms)
+- **Stacking**: Multiple toasts stack vertically with 8px gap
+\n##### Alerts (Odoo-Style)
+- **Inline Alerts**: Full-width, 4px radius, 12px padding, colored left border (4px)\n- **Types**: Success, Warning, Error, Info (matching semantic colors)
+- **Content**: Icon (18px) + message (14px) + optional close button\n- **Dismissible**: X button on right, fade-out animation (150ms)
+\n##### Loading States (Odoo-Style)\n- **Spinner**: Circular spinner (24px), primary color, centered in container
+- **Skeleton**: Gray placeholder blocks (#E9ECEF) matching content shape, subtle pulse animation
+- **Progress Bar**: Linear progress at top of page (3px height), indeterminate animation
+- **Button Loading**: Spinner replaces text, button disabled during loading
+\n##### Empty States (Odoo-Style)\n- **Illustration**: Simple icon (48px), centered, tertiary color
+- **Message**: Encouraging text (16px), secondary color, centered
+- **Action**: Primary button (Create, Add, Import), centered below message
+- **Example**: 'Create an opportunity to start playing with your pipeline' (as shown in image.png)
 
-#### 4.10.2 Mobile Optimizations
-- **Bottom Navigation**: Primary actions accessible by thumb (56px height, 5 items max)
-- **Swipe Gestures**: Swipe to delete, swipe to reveal actions, pull to refresh
-- **Full-Screen Modals**: Slide from bottom, easy to dismiss with drag down,16px handle
-- **Larger Touch Targets**: 48x48px minimum for all interactive elements, 56px for primary actions
-- **Simplified Views**: Hide secondary information, focus on essentials, progressive disclosure
-- **Native Patterns**: iOS and Android specific patterns (action sheets, bottom sheets)
+#### 4.8.7 Modals & Overlays (Odoo-Style)\n
+##### Modals (Odoo-Style)
+- **Size**: Small (400px), Medium (600px), Large (800px), Full (90% width)
+- **Background**: White, 4px radius, Level 3 shadow
+- **Header**: 46px height, 16px padding, border-bottom (1px, #DDDDDD), title (16px bold), close button (X)
+- **Body**: 16px padding, scrollable if content overflows
+- **Footer**: 46px height, 16px padding, border-top (1px, #DDDDDD), right-aligned buttons
+- **Backdrop**: Semi-transparent dark overlay (rgba(0,0,0,0.5)), click to close (optional)
+- **Animation**: Fade + scale (200ms ease-out) for appearance
 
-#### 4.10.3 Tablet Optimizations
-- **Split View**: Master-detail layout for lists and details, 40/60 split
-- **Floating Panels**: Contextual panels that don't block content, draggable and resizable
-- **Adaptive Grid**: 2-3 columns based on orientation (portrait/landscape)
-- **Gesture Support**: Pinch to zoom, two-finger scroll, swipe between views
-- **Keyboard Support**: External keyboard shortcuts, tab navigation
+##### Dropdowns (Odoo-Style)\n- **Container**: White background, 2px radius, Level 2 shadow, 1px border (#DDDDDD)\n- **Items**: 32px height, 12px horizontal padding, 14px text, hover background (#F9F9F9)\n- **Dividers**: 1px border (#E9ECEF), 4px vertical margin
+- **Icons**: 16px left-aligned, 8px right margin\n- **Max Height**: 300px with vertical scroll if needed
+- **Animation**: Fade + slide-down (150ms ease-out)\n
+##### Tooltips (Odoo-Style)\n- **Background**: Dark (#2C2D3A), white text, 2px radius, 6px padding
+- **Arrow**: 4px triangle pointing to trigger element
+- **Text**: 12px, single line or short multi-line
+- **Positioning**: Auto-positioned to avoid viewport edges
+- **Delay**: 500ms delay before showing, instant hide on mouse out
+- **Animation**: Fade (100ms)\n
+##### Popovers (Odoo-Style)
+- **Container**: White background, 4px radius, Level 2 shadow, 1px border (#DDDDDD)
+- **Header**: Optional, 12px padding, border-bottom,14px bold text
+- **Body**: 12px padding, 14px text, max-width 280px
+- **Arrow**: 8px triangle pointing to trigger element
+- **Close**: X button in header or click outside to dismiss
+- **Animation**: Fade + scale (150ms ease-out)
 
-### 4.11 Accessibility\n
+### 4.9 Odoo-Style Pipeline Kanban Design
+
+#### 4.9.1 Pipeline Layout (Based on image.png)
+- **Full-Width Layout**: Pipeline takes full viewport width with horizontal scroll
+- **Top Bar**: 46px height, white background, contains pipeline title, filters, view switcher, actions
+- **Column Container**: Horizontal flex layout, 16px gap between columns, 16px padding
+- **Responsive**: Vertical stacking on mobile (< 768px), horizontal scroll on tablet/desktop
+\n#### 4.9.2 Pipeline Columns (Odoo-Style)
+- **Column Width**: 280px fixed width, maintains consistency across all stages
+- **Column Header**: \n  - Background: Light gray (#F9F9F9)\n  - Border: 1px solid #DDDDDD
+  - Radius: 4px (top corners only)
+  - Height: 40px
+  - Padding: 12px
+  - Content: Stage name (14px bold, left) + count badge (12px, gray circle) + value (14px, right) + add button (24px, +)
+- **Column Body**:
+  - Background: White\n  - Border: 1px solid #DDDDDD (left, right, bottom)
+  - Radius: 4px (bottom corners only)
+  - Min-Height: 400px
+  - Padding: 8px
+  - Scrollable: Vertical scroll if cards overflow
+\n#### 4.9.3 Deal Cards (Odoo-Style)
+- **Card Container**:
+  - Background: White\n  - Border: 1px solid #DDDDDD
+  - Radius: 4px
+  - Padding: 12px
+  - Margin: 8px bottom
+  - Shadow: None (Odoo uses borders)
+  - Hover: Subtle background change (#F9F9F9), cursor grab
+- **Card Content**:
+  - Company Name: 14px bold, primary text color, truncate if too long
+  - Deal Value: 16px bold, primary color (#714B67), prominent display
+  - Probability: 12px, badge style, color-coded (green > 70%, orange 40-70%, red < 40%)
+  - Contact: 12px, secondary color, with avatar (24px circular)
+  - Next Action: 12px, secondary color, with clock icon (12px)
+  - Tags: Small chips (20px height) for categories or status\n- **Card Actions**:
+  - Visible on hover: Edit (pencil icon), View (eye icon), Delete (trash icon)
+  - Icons: 14px, secondary color, right-aligned
+  - Hover: Primary color, cursor pointer
+- **Drag Handle**:\n  - 6-dot icon (14px), tertiary color\n  - Visible on hover, left side of card
+  - Cursor: grab (grabbable), grabbing (while dragging)
+- **Priority Indicator**:
+  - Left border (4px) color-coded: Red (high), Orange (medium), Gray (low)
+  - Optional star icon (14px) for starred/important deals
+
+#### 4.9.4 Empty State (Odoo-Style, as shown in image.png)
+- **Centered Layout**: Vertically and horizontally centered in pipeline view
+- **Illustration**: Friendly character icon (96px), light colors, welcoming feel
+- **Message**: \n  - Primary: 'Create an opportunity to start playing with your pipeline' (18px, bold)
+  - Secondary: 'Use the New button, or send an email to info@ud-studios1.odoo.com to test the email gateway' (14px, secondary color)
+- **Action**: Prominent 'New' button (primary style) or link to email
+- **Background**: Clean white, no distractions
+\n#### 4.9.5 Pipeline Actions (Odoo-Style)
+- **New Button**: Primary button (top-left), 'New' text + plus icon, creates new opportunity
+- **Generate Leads**: Secondary button, AI-powered lead generation
+- **View Switcher**: Toggle between Kanban, List, Calendar, Graph views (icon buttons)
+- **Filters**: Dropdown with saved filters and custom filter builder
+- **Search**: Search bar (200px width) with icon, expands on focus
+- **Group By**: Dropdown to change grouping (by stage, by salesperson, by expected closing date)
+- **Settings**: Gear icon for pipeline configuration (stages, fields, automation)
+\n#### 4.9.6Drag & Drop Interactions (Odoo-Style)
+- **Dragging State**:
+  - Card: Slight rotation (2deg), Level 3 shadow, 95% opacity
+  - Cursor: grabbing\n  - Original position: Placeholder with dashed border (2px, primary color)
+- **Drop Zone**:
+  - Column: Highlighted background (#F3E5F5), dashed border (2px, primary color)
+  - Valid drop: Green highlight\n  - Invalid drop: Red highlight, not-allowed cursor
+- **Drop Animation**:
+  - Card: Smooth transition to new position (200ms ease-out)
+  - Column: Update count and total value with fade animation\n- **Auto-Scroll**: Columns auto-scroll when dragging near edges
+
+### 4.10 Responsive Design (Odoo-Style)
+\n#### 4.10.1 Mobile Optimization (< 768px)
+- **Navigation**: Hamburger menu (top-left), slide-in drawer navigation
+- **Pipeline**: Vertical stacking of columns, full-width cards
+- **Cards**: Larger touch targets (48px height), swipe actions (left: edit, right: delete)
+- **Forms**: Full-width inputs, larger buttons (40px height)
+- **Tables**: Card view instead of table, key information only
+- **Modals**: Full-screen on mobile, slide-up animation
+\n#### 4.10.2 Tablet Optimization (768px - 991px)
+- **Navigation**: Collapsible sidebar (icon-only mode), more screen space for content
+- **Pipeline**: 2-3 columns visible, horizontal scroll for more\n- **Split View**: Master-detail layout for lists (40% list, 60% detail)
+- **Touch-Friendly**: Larger buttons and touch targets (36px minimum)
+\n#### 4.10.3 Desktop Optimization (≥ 992px)
+- **Full Layout**: Sidebar + main content, optimal use of screen space
+- **Pipeline**: 4-5 columns visible, smooth horizontal scroll
+- **Multi-Panel**: Side-by-side views for efficiency (e.g., email + contact details)
+- **Keyboard Shortcuts**: Full keyboard navigation and shortcuts
+- **Hover States**: Rich hover interactions for better UX
+
+### 4.11 Accessibility (Odoo-Style)
+
 #### 4.11.1 WCAG 2.1 AAA Compliance
-- **Color Contrast**: Minimum 7:1 for normal text, 4.5:1 for large text (AAA standard)
-- **Focus Indicators**: Visible2px outline (#007AFF) on all interactive elements, 4px offset\n- **Keyboard Navigation**: Full keyboard support, logical tab order, skip links, keyboard shortcuts
-- **Screen Reader Support**: Semantic HTML5, comprehensive ARIA labels, live regions for dynamic content
-- **Text Resize**: Supports up to 200% zoom without breaking layout, responsive typography
-- **Touch Targets**: Minimum 44x44px (iOS), 48x48px recommended, adequate spacing
-\n#### 4.11.2 Inclusive Design\n- **Alternative Text**: All images have descriptive alt text, decorative images marked as such
+- **Color Contrast**: Minimum 7:1 for normal text, 4.5:1 for large text
+- **Focus Indicators**: Visible2px outline (primary color) on all interactive elements
+- **Keyboard Navigation**: Full keyboard support, logical tab order, skip links
+- **Screen Reader Support**: Semantic HTML5, comprehensive ARIA labels, live regions
+- **Text Resize**: Supports up to 200% zoom without breaking layout
+- **Touch Targets**: Minimum 32px for all interactive elements
+\n#### 4.11.2 Inclusive Design\n- **Alternative Text**: All images have descriptive alt text
 - **Captions**: Video content includes captions and transcripts
-- **Error Identification**: Clear error messages with suggestions, inline validation
-- **Consistent Navigation**: Predictable layout and interaction patterns across all pages
-- **Reduced Motion**: Respects prefers-reduced-motion setting, disables animations
-- **High Contrast Mode**: Support for high contrast themes, maintains readability
-- **Color Independence**: Information not conveyed by color alone, patterns and icons used
+- **Error Identification**: Clear error messages with suggestions
+- **Consistent Navigation**: Predictable layout and interaction patterns
+- **Reduced Motion**: Respects prefers-reduced-motion setting
+- **High Contrast Mode**: Support for high contrast themes
+- **Color Independence**: Information not conveyed by color alone
 
-### 4.12 Dark Mode
-
+### 4.12 Dark Mode (Odoo-Style)\n
 #### 4.12.1 Dark Color Palette
-- **Background**: #000000 (true black for OLED power saving)
-- **Surface**: #1C1C1E (elevated surfaces, cards)\n- **Surface Variant**: #2C2C2E (secondary cards, containers)
-- **Text Primary**: #FFFFFF (high contrast, 100% opacity)
-- **Text Secondary**: #98989D (medium contrast, 60% opacity)
-- **Text Tertiary**: #636366 (low contrast, 40% opacity)
-- **Divider**: #38383A (subtle separation)
-- **Primary**: #0A84FF (adjusted blue for dark mode)
+- **Background**: #1C1C1E - Main background, dark canvas
+- **Surface**: #2C2D3A - Elevated surfaces, cards, panels
+- **Surface Variant**: #3A3B47 - Secondary surfaces, hover states
+- **Text Primary**: #FFFFFF - High contrast, main content
+- **Text Secondary**: #B0B0B0 - Medium contrast, supporting text
+- **Text Tertiary**: #808080 - Low contrast, placeholders
+- **Divider**: #404040 - Subtle separators
+- **Primary**: #9B7EBD - Adjusted purple for dark mode
 \n#### 4.12.2 Dark Mode Adaptations
-- **Reduced Shadows**: Lighter shadows for visibility (rgba(255,255,255,0.1))
-- **Adjusted Colors**: Slightly desaturated for eye comfort, increased brightness
-- **Elevated Surfaces**: Lighter backgrounds for hierarchy (#1C1C1E → #2C2C2E → #3A3A3C)
-- **Automatic Switching**: Follows system preference (prefers-color-scheme)
-- **Manual Toggle**: User can override system setting, preference saved
-- **Smooth Transition**: 300ms transition between light and dark modes
+- **Reduced Shadows**: Lighter shadows for visibility
+- **Adjusted Colors**: Slightly desaturated for eye comfort
+- **Elevated Surfaces**: Lighter backgrounds for hierarchy
+- **Automatic Switching**: Follows system preference
+- **Manual Toggle**: User can override system setting
+- **Smooth Transition**: 200ms transition between modes
 
 ### 4.13 Performance & Optimization
 
 #### 4.13.1 Loading Strategy
-- **Skeleton Screens**: Show content structure while loading, match final layout
-- **Progressive Loading**: Load critical content first (above-the-fold), defer secondary\n- **Lazy Loading**: Images and components load as needed (Intersection Observer)
-- **Optimistic UI**: Show expected result immediately, sync in background, rollback on error
-- **Intelligent Caching**: Service workers for offline support, cache-first strategy
-- **Code Splitting**: Route-based and component-based splitting, dynamic imports
+- **Skeleton Screens**: Show content structure while loading
+- **Progressive Loading**: Load critical content first
+- **Lazy Loading**: Images and components load as needed
+- **Optimistic UI**: Show expected result immediately
+- **Intelligent Caching**: Service workers for offline support
+- **Code Splitting**: Route-based and component-based splitting
 
 #### 4.13.2 Animation Performance
-- **GPU Acceleration**: Use transform and opacity for smooth60fps animations
-- **60fps Target**: All animations maintain 60 frames per second,120fps on ProMotion displays
-- **Reduced Motion**: Disable animations for users who prefer it (prefers-reduced-motion)
-- **Debouncing**: Limit expensive operations during scrolling/resizing (requestAnimationFrame)
-- **Will-Change**: Hint browser for upcoming animations, remove after completion
+- **GPU Acceleration**: Use transform and opacity for smooth 60fps\n- **60fps Target**: All animations maintain 60 frames per second
+- **Reduced Motion**: Disable animations for users who prefer it
+- **Debouncing**: Limit expensive operations during scrolling/resizing
+\n### 4.14 Branding & Customization (Odoo-Style)
+\n#### 4.14.1 White-Label Support
+- **Custom Logo**: Upload company logo, automatic sizing
+- **Brand Colors**: Define primary, secondary colors with automatic palette generation
+- **Custom Domain**: Use company domain for hosted instance
+- **Email Templates**: Branded email communications
+- **Custom Fonts**: Upload and use company fonts
+- **Favicon**: Custom favicon and app icons
 
-### 4.14 Branding & Customization
-
-#### 4.14.1 White-Label Support
-- **Custom Logo**: Upload company logo (SVG preferred), automatic sizing and positioning
-- **Brand Colors**: Define primary, secondary, accent colors with automatic palette generation
-- **Custom Domain**: Use company domain for hosted instance (CNAME setup)
-- **Email Templates**: Branded email communications with logo and colors
-- **Custom Fonts**: Upload and use company fonts with web font optimization (WOFF2)
-- **Favicon**: Custom favicon and app icons for all platforms
-\n#### 4.14.2 Theme Builder
+#### 4.14.2 Theme Builder
 - **Visual Editor**: Drag-and-drop theme customization with live preview
-- **Color Picker**: Choose colors with accessibility checking (contrast ratio calculator)
-- **Preview Mode**: See changes in real-time before applying, test on sample pages
-- **Theme Presets**: Pre-designed themes for quick setup (Light, Dark, High Contrast, Industry-specific)
-- **Export/Import**: Share themes across instances, JSON format\n- **Design Tokens**: CSS custom properties for easy theming
+- **Color Picker**: Choose colors with accessibility checking
+- **Preview Mode**: See changes in real-time before applying
+- **Theme Presets**: Pre-designed themes for quick setup
+- **Export/Import**: Share themes across instances
 
 ## 5. Technical Architecture
 
 ### 5.1 Frontend Architecture
-- **Framework**: React 18+ with TypeScript for type safety and developer experience
-- **State Management**: Redux Toolkit with RTK Query for API calls and caching
-- **UI Library**: Custom component library built on Radix UI primitives with full accessibility
-- **Styling**: Tailwind CSS with custom design tokens and JIT compiler
-- **Animation**: Framer Motion for complex animations and gestures
-- **Build Tool**: Vite for fast development (HMR) and optimized production builds
+- **Framework**: React 18+ with TypeScript for type safety
+- **State Management**: Redux Toolkit with RTK Query for API calls
+- **UI Library**: Custom component library with Odoo-inspired design
+- **Styling**: Tailwind CSS with custom design tokens
+- **Animation**: Framer Motion for complex animations
+- **Build Tool**: Vite for fast development and optimized builds
 - **Testing**: Jest + React Testing Library for unit tests, Playwright for E2E\n
 ### 5.2 AI/ML Infrastructure
 \n#### 5.2.1 Large Language Model (LLM) Integration
-- **Primary LLM**: GPT-4 Turbo for advanced reasoning and generation tasks
-- **Specialized Models**: Fine-tuned models for domain-specific tasks (sales, support)\n- **Embedding Models**: text-embedding-3-large for semantic search and similarity
-- **Vector Database**: Pinecone for efficient similarity search and retrieval
-- **Prompt Engineering**: Optimized prompts with few-shot learning and chain-of-thought
-- **Context Management**: Intelligent context window management for long conversations
-- **Streaming**: Real-time streaming responses for better UX
-- **Caching**: Semantic caching to reduce latency and costs
+- **Primary LLM**: GPT-4 Turbo for advanced reasoning\n- **Specialized Models**: Fine-tuned models for domain-specific tasks
+- **Embedding Models**: text-embedding-3-large for semantic search
+- **Vector Database**: Pinecone for efficient similarity search
+- **Prompt Engineering**: Optimized prompts with few-shot learning
+- **Context Management**: Intelligent context window management
+- **Streaming**: Real-time streaming responses
+- **Caching**: Semantic caching to reduce latency
 
 #### 5.2.2 Generative AI & Image Generation
 - **Image Generation**: DALL-E 3 for high-quality image creation
 - **Image Editing**: Stable Diffusion for inpainting and outpainting
-- **Style Transfer**: Custom models for brand-consistent image generation
+- **Style Transfer**: Custom models for brand-consistent images
 - **Image Enhancement**: AI upscaling and quality improvement
 - **Content Moderation**: Automated filtering for inappropriate content
 \n#### 5.2.3 Machine Learning Pipeline
 - **Cloud-based ML pipeline** with model versioning (MLflow)
 - **Real-time inference engine** for instant predictions (<100ms latency)
 - **Continuous model training** and improvement with A/B testing
-- **Explainable AI layer** for transparency and trust (SHAP, LIME)
-- **Model monitoring** and performance tracking with alerts (Datadog)\n- **Multi-model ensemble** for improved accuracy and robustness
-- **AutoML**: Automated model selection and hyperparameter tuning
-
+- **Explainable AI layer** for transparency (SHAP, LIME)
+- **Model monitoring** and performance tracking (Datadog)
+- **Multi-model ensemble** for improved accuracy
+- **AutoML**: Automated model selection and hyperparameter tuning\n
 ### 5.3 Backend Architecture
-- **Microservices**: Domain-driven design with independent services (Node.js, Python)
-- **API Gateway**: GraphQL and REST endpoints with rate limiting and authentication
-- **Message Queue**: Event-driven architecture with Kafka for real-time data streaming
-- **Caching**: Redis for session management, frequent queries, and real-time features
-- **Search**: Elasticsearch for full-text search, analytics, and log aggregation
-- **Container Orchestration**: Kubernetes for scalability and high availability
-\n### 5.4 Data Architecture
-- **Primary Database**: PostgreSQL with read replicas for scalability and high availability
-- **Data Lake**: S3-compatible storage for historical analytics and data science
-- **Real-time Streaming**: Apache Kafka for live data updates and event sourcing
-- **Data Warehouse**: Snowflake for business intelligence and complex analytics
-- **Time-Series DB**: InfluxDB for metrics, monitoring, and IoT data
-- **Graph Database**: Neo4j for relationship mapping and network analysis
-
-### 5.5 Security & Compliance
-- **SOC 2 Type II** certified infrastructure with annual audits
-- **ISO 27001** compliance with continuous monitoring\n- **Penetration Testing**: Quarterly security assessments by third-party experts
-- **Data Residency**: Regional data centers for compliance (US, EU, APAC)
-- **Backup & DR**: RPO < 1 hour, RTO < 4 hours, multi-region replication
-- **Encryption**: AES-256 at rest, TLS 1.3 in transit, end-to-end encryption for sensitive data
-- **Zero Trust Architecture**: Identity-based access control, least privilege principle
+- **Microservices**: Domain-driven design with independent services
+- **API Gateway**: GraphQL and REST endpoints with rate limiting
+- **Message Queue**: Event-driven architecture with Kafka
+- **Caching**: Redis for session management and frequent queries
+- **Search**: Elasticsearch for full-text search and analytics
+- **Container Orchestration**: Kubernetes for scalability\n\n### 5.4 Data Architecture
+- **Primary Database**: PostgreSQL with read replicas\n- **Data Lake**: S3-compatible storage for historical analytics
+- **Real-time Streaming**: Apache Kafka for live data updates
+- **Data Warehouse**: Snowflake for business intelligence
+- **Time-Series DB**: InfluxDB for metrics and monitoring
+- **Graph Database**: Neo4j for relationship mapping
+\n### 5.5 Security & Compliance
+- **SOC 2 Type II** certified infrastructure
+- **ISO 27001** compliance\n- **Penetration Testing**: Quarterly security assessments
+- **Data Residency**: Regional data centers for compliance
+- **Backup & DR**: RPO < 1 hour, RTO < 4 hours
+- **Encryption**: AES-256 at rest, TLS 1.3 in transit
+- **Zero Trust Architecture**: Identity-based access control
 
 ### 5.6 Performance Targets
-- **Page Load**: < 2 seconds for initial load (Lighthouse score > 90)
-- **Time to Interactive**: < 3 seconds for full interactivity\n- **API Response**: < 200ms for 95th percentile, < 500ms for 99th percentile
-- **Uptime**: 99.9% SLA with status page and incident communication
-- **Concurrent Users**: Support10,000+ simultaneous users per instance
+- **Page Load**: < 2 seconds for initial load
+- **Time to Interactive**: < 3 seconds\n- **API Response**: < 200ms for 95th percentile
+- **Uptime**: 99.9% SLA
+- **Concurrent Users**: Support 10,000+ simultaneous users
 - **AI Inference**: < 100ms for predictions, < 2s for LLM responses
 
 ## 6. Success Metrics
 
 ### 6.1 Business KPIs
-- **Sales Cycle Reduction**: 25-40% shorter time to close deals
-- **Lead Conversion Rate**: 30-50% improvement in lead-to-opportunity conversion\n- **Customer Retention**: 20-35% increase in customer retention rate
-- **Sales Productivity**: 35-50% more deals per rep per quarter
-- **Forecast Accuracy**: 90%+ accuracy rate for quarterly forecasts
-- **User Adoption**: 80%+ daily active users within 3 months of launch
+- **Sales Cycle Reduction**: 25-40% shorter time to close\n- **Lead Conversion Rate**: 30-50% improvement
+- **Customer Retention**: 20-35% increase
+- **Sales Productivity**: 35-50% more deals per rep
+- **Forecast Accuracy**: 90%+ accuracy rate
+- **User Adoption**: 80%+ daily active users within 3 months
 - **ROI**: 300%+ return on investment within 12 months
 
 ### 6.2 AI Performance Metrics
 - **Lead Scoring Accuracy**: > 85% precision, > 80% recall
 - **Churn Prediction**: > 80% recall with< 10% false positive rate
-- **Recommendation Acceptance**: > 60% click-through rate for AI suggestions
-- **Automation Success**: > 95% completion rate for automated workflows
-- **User Satisfaction**: > 4.5/5 rating for AI features in user surveys
-- **Model Latency**: < 100ms for real-time predictions, < 2s for LLM responses
-- **LLM Accuracy**: > 90% for task completion, > 95% for factual accuracy
+- **Recommendation Acceptance**: > 60% click-through rate
+- **Automation Success**: > 95% completion rate
+- **User Satisfaction**: > 4.5/5 rating for AI features
+- **Model Latency**: < 100ms for predictions
+- **LLM Accuracy**: > 90% for task completion
 
 ### 6.3 UX Metrics
-- **Task Completion Rate**: > 90% for core workflows without assistance
-- **Time on Task**: 40% reduction vs. previous system or competitors
+- **Task Completion Rate**: > 90% for core workflows
+- **Time on Task**: 40% reduction vs. competitors
 - **Error Rate**: < 2% user errors, < 1% system errors
-- **User Satisfaction**: > 4.7/5 NPS score, > 80% would recommend
-- **Mobile Usage**: 30%+ of interactions on mobile devices
+- **User Satisfaction**: > 4.7/5 NPS score
+- **Mobile Usage**: 30%+ of interactions on mobile
 - **Feature Discovery**: 70%+ users discover AI features within first week
-- **Accessibility**: 100% WCAG 2.1 AAA compliance, tested with assistive technologies
+- **Accessibility**: 100% WCAG 2.1 AAA compliance
 
 ### 6.4 Technical Metrics
-- **Page Load Time**: < 2s for 95th percentile (Lighthouse Performance > 90)
-- **API Latency**: < 200ms average, < 500ms for 99th percentile
-- **Error Rate**: < 0.1% of requests result in errors
-- **Uptime**: 99.9% availability (< 8.76 hours downtime per year)
-- **Lighthouse Score**: > 90 for Performance, Accessibility, Best Practices, SEO
+- **Page Load Time**: < 2s for 95th percentile
+- **API Latency**: < 200ms average
+- **Error Rate**: < 0.1% of requests
+- **Uptime**: 99.9% availability
+- **Lighthouse Score**: > 90 for all categories
 - **Core Web Vitals**: LCP < 2.5s, FID < 100ms, CLS < 0.1\n\n## 7. Implementation Phases
 
 ### Phase 1: Foundation (Months 1-3)
 - Core CRM features (contacts, leads, opportunities, accounts)
-- Basic pipeline management with Kanban view (image.png style)
+- Odoo-style pipeline management with Kanban view
 - User authentication and role-based access control
-- Premium UI implementation with design system
+- Odoo-inspired UI implementation with design system
 - Mobile-responsive layouts for all core features
 - Basic reporting and dashboards
 
@@ -928,8 +1032,7 @@ Inspired by Apple's 'Designed by Apple in California' ethos and Google's 'Focus 
 - Sentiment analysis and customer health scoring
 - Predictive analytics and forecasting
 - Conversational AI assistant (basic)\n- LLM integration for email composition and summarization
-
-### Phase 3: Advanced AI (Months 7-9)
+\n### Phase 3: Advanced AI (Months 7-9)
 - Advanced LLM features (natural language queries, document intelligence)
 - Generative AI for image creation and visual content
 - Advanced NLP capabilities (meeting notes, key topic extraction)
@@ -938,7 +1041,7 @@ Inspired by Apple's 'Designed by Apple in California' ethos and Google's 'Focus 
 - Recommendation engine for upsell/cross-sell
 
 ### Phase 4: Integration & Enterprise (Months 10-12)\n- Email and calendar integration with smart scheduling
-- Third-party app marketplace with100+ integrations
+- Third-party app marketplace with 100+ integrations
 - API and webhook infrastructure for custom integrations
 - Advanced reporting and BI tools with embedded analytics
 - Native mobile apps (iOS and Android) with offline support
@@ -953,38 +1056,56 @@ Inspired by Apple's 'Designed by Apple in California' ethos and Google's 'Focus 
 \n## 8. Reference Materials
 
 ### 8.1 Design Inspiration
-- **Reference UI**: image.png (Pipeline Kanban view with dark theme, clean card design, intuitive navigation, and empty state)
-- Apple Human Interface Guidelines (iOS, macOS, watchOS)
-- Google Material Design 3(Android, Web)\n- Microsoft Fluent Design System\n- Salesforce Lightning Design System
-\n### 8.2 Design Systems Referenced
-- **Apple**: SF Pro font family, iOS color palette, animation principles, spatial design
-- **Google**: Material Design 3, elevation system, motion design, adaptive layouts
-- **Best Practices**: Accessibility (WCAG 2.1 AAA), performance (Core Web Vitals), responsive design
+- **Primary Reference**: Odoo CRM (ud-studios1.odoo.com/odoo/crm) - Clean, professional design with efficient workflows
+- **Pipeline UI**: image.png (Odoo-style Kanban view with dark theme, clean cards, intuitive navigation, friendly empty state)
+- Odoo Design Guidelines and UI patterns
+- Odoo Community documentation and best practices
+
+### 8.2 Design Systems Referenced
+- **Odoo**: Primary design inspiration, component patterns, interaction design, color system
+- **Bootstrap**: Grid system, responsive utilities, component structure\n- **Tailwind CSS**: Utility-first approach, spacing system, design tokens
 \n### 8.3 Competitive Analysis
-- **Salesforce**: Enterprise features, customization, ecosystem\n- **HubSpot**: User experience, onboarding, inbound marketing
+- **Odoo CRM**: Design excellence, workflow efficiency, modular architecture
+- **Salesforce**: Enterprise features, customization, ecosystem
+- **HubSpot**: User experience, onboarding, inbound marketing
 - **Pipedrive**: Visual pipeline, simplicity, sales focus
 - **Zoho CRM**: AI features (Zia), affordability, all-in-one platform
-- **Monday.com**: Visual design, collaboration, flexibility
 
 ### 8.4 AI/LLM Technologies
 - **OpenAI**: GPT-4 Turbo, DALL-E 3, Whisper, text-embedding-3\n- **Anthropic**: Claude for advanced reasoning and safety
-- **Google**: Gemini for multimodal capabilities\n- **Open Source**: Llama 2, Stable Diffusion, Whisper\n\n---
+- **Google**: Gemini for multimodal capabilities
+- **Open Source**: Llama 2, Stable Diffusion, Whisper
 
-**Document Version**: 3.0- Ultimate AI Edition
+## 9. Reference Images
+
+### 9.1 Pipeline Kanban View
+- **image.png**: Odoo-style pipeline interface showing:\n  - Clean top navigation with CRM branding
+  - Horizontal Kanban columns (New, Qualified, Proposition, Won)
+  - Empty state with friendly illustration and encouraging message
+  - Dark theme with professional color scheme
+  - Intuitive action buttons (New, Generate Leads)\n  - View switcher icons (Kanban, List, Calendar, etc.)
+  - Search and filter functionality
+
+---
+
+**Document Version**: 4.0 - Odoo-Inspired Design Edition
 **Last Updated**: 2025-11-28
 **Status**: Ready for Development
-**Design Reference**: image.png (Pipeline Kanban interface)\n\n---
+**Design Reference**: Odoo CRM (ud-studios1.odoo.com) + image.png
 
-##9. Additional Notes
+---
 
-This CRM platform represents the pinnacle of enterprise software design, combining:\n\n1. **Apple's Design Excellence**: Obsessive attention to detail, minimalist aesthetics, fluid animations, and premium feel
-2. **Google's Innovation**: Material Design principles, bold visuals, adaptive layouts, and accessibility-first approach
-3. **Advanced AI**: Large Language Models for natural language interaction, generative AI for visual content, and machine learning for predictive insights
-4. **Professional Polish**: Every pixel, interaction, and animation meticulously crafted for a world-class user experience
+## 10. Additional Notes
 
-The platform is designed to be:\n- **Intuitive**: Minimal learning curve, natural interactions\n- **Intelligent**: AI working silently to amplify human capability
-- **Beautiful**: Visually stunning with purposeful design
+This CRM platform combines:\n\n1. **Odoo's Design Excellence**: Clean, professional interface with efficient workflows and intuitive navigation
+2. **Advanced AI Capabilities**: Large Language Models, generative AI, and machine learning for intelligent automation
+3. **Enterprise-Grade Features**: Comprehensive CRM functionality with scalability and security
+4. **User-Centric Design**: Focus on usability, productivity, and delightful user experience
+\nThe platform is designed to be:\n- **Intuitive**: Minimal learning curve, natural interactions inspired by Odoo
+- **Intelligent**: AI working silently to amplify human capability
+- **Professional**: Clean, business-focused design that inspires confidence
 - **Powerful**: Enterprise-grade features without complexity
-- **Accessible**: Inclusive design for all users\n- **Performant**: Fast, responsive, and reliable
+- **Accessible**: Inclusive design for all users with WCAG AAA compliance
+- **Performant**: Fast, responsive, and reliable across all devices
 
-This is not just a CRM—it's a competitive advantage delivered through exceptional design and cutting-edge AI technology.
+This is not just a CRM—it's a competitive advantage delivered through exceptional Odoo-inspired design and cutting-edge AI technology.

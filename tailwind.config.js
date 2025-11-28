@@ -77,6 +77,15 @@ export default {
                     '3': 'hsl(var(--chart-3))',
                     '4': 'hsl(var(--chart-4))',
                     '5': 'hsl(var(--chart-5))'
+                },
+                sidebar: {
+                    DEFAULT: 'hsl(var(--sidebar))',
+                    foreground: 'hsl(var(--sidebar-foreground))',
+                    hover: 'hsl(var(--sidebar-hover))'
+                },
+                topbar: {
+                    DEFAULT: 'hsl(var(--topbar))',
+                    foreground: 'hsl(var(--topbar-foreground))'
                 }
             },
             borderRadius: {

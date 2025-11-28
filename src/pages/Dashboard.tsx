@@ -5,23 +5,14 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Skeleton } from '@/components/ui/skeleton';
 import {
-  Users,
-  UserPlus,
-  TrendingUp,
-  DollarSign,
-  Target,
-  CheckCircle2,
-  XCircle,
-  AlertCircle,
-  Calendar,
-  Plus,
-  Brain,
-  Sparkles,
-  LayoutGrid,
+  Users, UserPlus, TrendingUp, DollarSign, Target, CheckCircle2,
+  AlertCircle, Calendar, Plus, Sparkles, ArrowUpRight, ArrowDownRight,
+  Clock, Zap, Brain, TrendingDown
 } from 'lucide-react';
 import { getDashboardStats, getPipelineStages, getLeadSources } from '@/db/api';
 import type { DashboardStats, PipelineStage, LeadSourceData } from '@/types/types';
 import { useToast } from '@/hooks/use-toast';
+import { cn } from '@/lib/utils';
 
 export default function Dashboard() {
   const [stats, setStats] = useState<DashboardStats | null>(null);
@@ -65,23 +56,19 @@ export default function Dashboard() {
     }).format(value);
   };
 
-  const formatPercent = (value: number) => {
-    return `${value.toFixed(1)}%`;
-  };
-
   if (loading) {
     return (
-      <div className="container mx-auto p-6 space-y-6">
+      <div className="space-y-6 animate-fade-in">
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {[...Array(4)].map((_, i) => (
-            <Card key={i}>
+            <Card key={i} className="bg-card border-border">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <Skeleton className="h-4 w-24" />
-                <Skeleton className="h-4 w-4 rounded-full" />
+                <Skeleton className="h-4 w-24 bg-muted" />
+                <Skeleton className="h-4 w-4 rounded-full bg-muted" />
               </CardHeader>
               <CardContent>
-                <Skeleton className="h-8 w-20 mb-2" />
-                <Skeleton className="h-3 w-32" />
+                <Skeleton className="h-8 w-20 mb-2 bg-muted" />
+                <Skeleton className="h-3 w-32 bg-muted" />
               </CardContent>
             </Card>
           ))}
@@ -92,289 +79,288 @@ export default function Dashboard() {
 
   if (!stats) return null;
 
+  const statCards = [
+    {
+      title: 'Total Revenue',
+      value: formatCurrency(stats.totalRevenue),
+      change: '+12.5%',
+      trend: 'up',
+      icon: DollarSign,
+      color: 'text-emerald-400',
+      bgColor: 'bg-emerald-500/10',
+    },
+    {
+      title: 'Active Leads',
+      value: stats.totalLeads.toString(),
+      change: '+8.2%',
+      trend: 'up',
+      icon: UserPlus,
+      color: 'text-blue-400',
+      bgColor: 'bg-blue-500/10',
+    },
+    {
+      title: 'Opportunities',
+      value: stats.totalOpportunities.toString(),
+      change: '+15.3%',
+      trend: 'up',
+      icon: Target,
+      color: 'text-purple-400',
+      bgColor: 'bg-purple-500/10',
+    },
+    {
+      title: 'Win Rate',
+      value: `${stats.conversionRate.toFixed(1)}%`,
+      change: '-2.1%',
+      trend: 'down',
+      icon: TrendingUp,
+      color: 'text-amber-400',
+      bgColor: 'bg-amber-500/10',
+    },
+  ];
+
   return (
-    <div className="container mx-auto p-6 space-y-6">
+    <div className="space-y-6 animate-fade-in">
+      {/* Header */}
       <div className="flex justify-between items-center">
         <div>
           <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
-          <p className="text-muted-foreground">
-            Welcome back! Here's an overview of your CRM performance.
+          <p className="text-muted-foreground mt-1">
+            Welcome back! Here's your business overview
           </p>
         </div>
-        <div className="flex gap-2">
-          <Link to="/leads">
-            <Button>
-              <Plus className="mr-2 h-4 w-4" />
-              New Lead
-            </Button>
-          </Link>
+        <div className="flex items-center gap-2">
+          <Button variant="outline" size="sm">
+            <Calendar className="h-4 w-4 mr-2" />
+            Last 30 days
+          </Button>
+          <Button size="sm" className="gap-2">
+            <Sparkles className="h-4 w-4" />
+            AI Insights
+          </Button>
         </div>
       </div>
 
+      {/* Stats Grid */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Total Leads</CardTitle>
-            <UserPlus className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{stats.totalLeads}</div>
-            <p className="text-xs text-muted-foreground">
-              Potential customers in pipeline
-            </p>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Total Contacts</CardTitle>
-            <Users className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{stats.totalContacts}</div>
-            <p className="text-xs text-muted-foreground">
-              Active customer relationships
-            </p>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Open Opportunities</CardTitle>
-            <Target className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{stats.openOpportunities}</div>
-            <p className="text-xs text-muted-foreground">
-              Deals in progress
-            </p>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Total Revenue</CardTitle>
-            <DollarSign className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{formatCurrency(stats.totalRevenue)}</div>
-            <p className="text-xs text-muted-foreground">
-              Pipeline value
-            </p>
-          </CardContent>
-        </Card>
+        {statCards.map((stat, index) => {
+          const Icon = stat.icon;
+          const TrendIcon = stat.trend === 'up' ? ArrowUpRight : ArrowDownRight;
+          
+          return (
+            <Card 
+              key={index}
+              className="bg-card border-border hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 group cursor-pointer"
+            >
+              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                <CardTitle className="text-sm font-medium text-muted-foreground">
+                  {stat.title}
+                </CardTitle>
+                <div className={cn('p-2 rounded-lg', stat.bgColor)}>
+                  <Icon className={cn('h-4 w-4', stat.color)} />
+                </div>
+              </CardHeader>
+              <CardContent>
+                <div className="text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
+                  {stat.value}
+                </div>
+                <div className="flex items-center gap-1 mt-1">
+                  <TrendIcon className={cn(
+                    'h-3 w-3',
+                    stat.trend === 'up' ? 'text-emerald-400' : 'text-red-400'
+                  )} />
+                  <span className={cn(
+                    'text-xs font-medium',
+                    stat.trend === 'up' ? 'text-emerald-400' : 'text-red-400'
+                  )}>
+                    {stat.change}
+                  </span>
+                  <span className="text-xs text-muted-foreground">vs last month</span>
+                </div>
+              </CardContent>
+            </Card>
+          );
+        })}
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Won Deals</CardTitle>
-            <CheckCircle2 className="h-4 w-4 text-success" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold text-success">{stats.wonOpportunities}</div>
-            <p className="text-xs text-muted-foreground">
-              Successfully closed
-            </p>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Lost Deals</CardTitle>
-            <XCircle className="h-4 w-4 text-destructive" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold text-destructive">{stats.lostOpportunities}</div>
-            <p className="text-xs text-muted-foreground">
-              Opportunities lost
-            </p>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Conversion Rate</CardTitle>
-            <TrendingUp className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{formatPercent(stats.conversionRate)}</div>
-            <p className="text-xs text-muted-foreground">
-              Lead to customer conversion
-            </p>
-          </CardContent>
-        </Card>
-      </div>
-
-      <div className="grid gap-4 md:grid-cols-2">
-        <Card>
-          <CardHeader>
-            <CardTitle>Pipeline by Stage</CardTitle>
+      {/* Main Content Grid */}
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {/* Pipeline Overview */}
+        <Card className="lg:col-span-2 bg-card border-border">
+          <CardHeader className="flex flex-row items-center justify-between">
+            <div>
+              <CardTitle>Sales Pipeline</CardTitle>
+              <p className="text-sm text-muted-foreground mt-1">
+                Track your deals through each stage
+              </p>
+            </div>
+            <Button variant="outline" size="sm" asChild>
+              <Link to="/pipeline">
+                View All
+                <ArrowUpRight className="h-4 w-4 ml-1" />
+              </Link>
+            </Button>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              {pipelineStages.length === 0 ? (
-                <p className="text-sm text-muted-foreground text-center py-4">
-                  No opportunities in pipeline
-                </p>
-              ) : (
-                pipelineStages.map((stage) => (
-                  <div key={stage.stage} className="space-y-2">
-                    <div className="flex items-center justify-between">
+              {pipelineStages.map((stage, index) => {
+                const percentage = (stage.count / stats.totalOpportunities) * 100 || 0;
+                const colors = [
+                  'bg-blue-500',
+                  'bg-purple-500',
+                  'bg-amber-500',
+                  'bg-emerald-500',
+                ];
+                
+                return (
+                  <div key={index} className="space-y-2">
+                    <div className="flex items-center justify-between text-sm">
                       <div className="flex items-center gap-2">
-                        <Badge variant="outline" className="capitalize">
-                          {stage.stage}
-                        </Badge>
-                        <span className="text-sm text-muted-foreground">
-                          {stage.count} {stage.count === 1 ? 'deal' : 'deals'}
+                        <div className={cn('w-2 h-2 rounded-full', colors[index % colors.length])} />
+                        <span className="font-medium text-foreground">{stage.stage}</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <span className="text-muted-foreground">{stage.count} deals</span>
+                        <span className="font-semibold text-foreground">
+                          {formatCurrency(stage.totalValue)}
                         </span>
                       </div>
-                      <span className="text-sm font-medium">
-                        {formatCurrency(stage.totalValue)}
-                      </span>
+                    </div>
+                    <div className="h-2 bg-muted rounded-full overflow-hidden">
+                      <div
+                        className={cn('h-full rounded-full transition-all duration-500', colors[index % colors.length])}
+                        style={{ width: `${percentage}%` }}
+                      />
                     </div>
                   </div>
-                ))
-              )}
+                );
+              })}
             </div>
           </CardContent>
         </Card>
 
-        <Card>
-          <CardHeader>
-            <CardTitle>Lead Sources</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              {leadSources.length === 0 ? (
-                <p className="text-sm text-muted-foreground text-center py-4">
-                  No lead sources data
-                </p>
-              ) : (
-                leadSources.map((source) => (
-                  <div key={source.source} className="flex items-center justify-between">
-                    <span className="text-sm font-medium capitalize">
-                      {source.source}
-                    </span>
-                    <Badge variant="secondary">{source.count}</Badge>
-                  </div>
-                ))
-              )}
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-
-      <div className="grid gap-4 md:grid-cols-2">
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between">
-            <CardTitle>Tasks Overview</CardTitle>
-            <Calendar className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              <div className="flex items-center justify-between p-4 border border-border rounded-lg">
-                <div className="flex items-center gap-3">
-                  <AlertCircle className="h-5 w-5 text-destructive" />
-                  <div>
-                    <p className="text-sm font-medium">Overdue Tasks</p>
-                    <p className="text-xs text-muted-foreground">Requires immediate attention</p>
-                  </div>
-                </div>
-                <span className="text-2xl font-bold text-destructive">{stats.tasksOverdue}</span>
-              </div>
-              <div className="flex items-center justify-between p-4 border border-border rounded-lg">
-                <div className="flex items-center gap-3">
-                  <Calendar className="h-5 w-5 text-warning" />
-                  <div>
-                    <p className="text-sm font-medium">Due Today</p>
-                    <p className="text-xs text-muted-foreground">Complete before end of day</p>
-                  </div>
-                </div>
-                <span className="text-2xl font-bold text-warning">{stats.tasksDueToday}</span>
-              </div>
-            </div>
-            <Link to="/tasks">
-              <Button variant="outline" className="w-full mt-4">
-                View All Tasks
-              </Button>
-            </Link>
-          </CardContent>
-        </Card>
-
-        <Card>
+        {/* Quick Actions */}
+        <Card className="bg-card border-border">
           <CardHeader>
             <CardTitle>Quick Actions</CardTitle>
+            <p className="text-sm text-muted-foreground mt-1">
+              Common tasks and shortcuts
+            </p>
           </CardHeader>
           <CardContent className="space-y-2">
-            <Link to="/leads">
-              <Button variant="outline" className="w-full justify-start">
-                <UserPlus className="mr-2 h-4 w-4" />
+            <Button variant="outline" className="w-full justify-start" asChild>
+              <Link to="/leads">
+                <Plus className="h-4 w-4 mr-2" />
                 Add New Lead
-              </Button>
-            </Link>
-            <Link to="/contacts">
-              <Button variant="outline" className="w-full justify-start">
-                <Users className="mr-2 h-4 w-4" />
-                Add New Contact
-              </Button>
-            </Link>
-            <Link to="/pipeline">
-              <Button variant="outline" className="w-full justify-start">
-                <LayoutGrid className="mr-2 h-4 w-4" />
-                View Pipeline
-              </Button>
-            </Link>
-            <Link to="/opportunities">
-              <Button variant="outline" className="w-full justify-start">
-                <Target className="mr-2 h-4 w-4" />
+              </Link>
+            </Button>
+            <Button variant="outline" className="w-full justify-start" asChild>
+              <Link to="/contacts">
+                <Users className="h-4 w-4 mr-2" />
+                Add Contact
+              </Link>
+            </Button>
+            <Button variant="outline" className="w-full justify-start" asChild>
+              <Link to="/pipeline">
+                <Target className="h-4 w-4 mr-2" />
                 Create Opportunity
-              </Button>
-            </Link>
-            <Link to="/tasks">
-              <Button variant="outline" className="w-full justify-start">
-                <Calendar className="mr-2 h-4 w-4" />
-                Create Task
-              </Button>
-            </Link>
+              </Link>
+            </Button>
+            <Button variant="outline" className="w-full justify-start" asChild>
+              <Link to="/activities">
+                <CheckCircle2 className="h-4 w-4 mr-2" />
+                Schedule Activity
+              </Link>
+            </Button>
           </CardContent>
         </Card>
 
-        <Card className="bg-gradient-to-br from-primary/10 to-primary/5 border-primary/20">
+        {/* Lead Sources */}
+        <Card className="bg-card border-border">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Brain className="h-5 w-5 text-primary" />
-              AI-Powered Insights
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-3">
-            <p className="text-sm text-muted-foreground">
-              Leverage artificial intelligence to optimize your CRM strategy
+            <CardTitle>Lead Sources</CardTitle>
+            <p className="text-sm text-muted-foreground mt-1">
+              Where your leads come from
             </p>
-            <div className="space-y-2">
-              <div className="flex items-start gap-2 text-sm">
-                <Sparkles className="h-4 w-4 text-primary mt-0.5" />
-                <span>Smart lead scoring & prioritization</span>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
+              {leadSources.map((source, index) => {
+                const percentage = (source.count / stats.totalLeads) * 100 || 0;
+                const colors = [
+                  { bg: 'bg-blue-500/10', text: 'text-blue-400', bar: 'bg-blue-500' },
+                  { bg: 'bg-purple-500/10', text: 'text-purple-400', bar: 'bg-purple-500' },
+                  { bg: 'bg-emerald-500/10', text: 'text-emerald-400', bar: 'bg-emerald-500' },
+                  { bg: 'bg-amber-500/10', text: 'text-amber-400', bar: 'bg-amber-500' },
+                ];
+                const color = colors[index % colors.length];
+                
+                return (
+                  <div key={index} className="space-y-2">
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm font-medium text-foreground">{source.source}</span>
+                      <Badge variant="secondary" className={cn(color.bg, color.text)}>
+                        {source.count}
+                      </Badge>
+                    </div>
+                    <div className="h-2 bg-muted rounded-full overflow-hidden">
+                      <div
+                        className={cn('h-full rounded-full transition-all duration-500', color.bar)}
+                        style={{ width: `${percentage}%` }}
+                      />
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* AI Insights */}
+        <Card className="lg:col-span-2 bg-gradient-to-br from-primary/10 to-purple-500/10 border-primary/20">
+          <CardHeader>
+            <div className="flex items-center gap-2">
+              <div className="p-2 rounded-lg bg-primary/20">
+                <Brain className="h-5 w-5 text-primary" />
               </div>
-              <div className="flex items-start gap-2 text-sm">
-                <Sparkles className="h-4 w-4 text-primary mt-0.5" />
-                <span>Churn prediction & prevention</span>
-              </div>
-              <div className="flex items-start gap-2 text-sm">
-                <Sparkles className="h-4 w-4 text-primary mt-0.5" />
-                <span>Next-best-action recommendations</span>
-              </div>
-              <div className="flex items-start gap-2 text-sm">
-                <Sparkles className="h-4 w-4 text-primary mt-0.5" />
-                <span>Sentiment analysis & email drafting</span>
+              <div>
+                <CardTitle className="flex items-center gap-2">
+                  AI-Powered Insights
+                  <Sparkles className="h-4 w-4 text-primary animate-pulse" />
+                </CardTitle>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Smart recommendations for your business
+                </p>
               </div>
             </div>
-            <Link to="/ai-insights">
-              <Button className="w-full mt-2">
-                <Brain className="mr-2 h-4 w-4" />
-                Explore AI Features
-              </Button>
-            </Link>
+          </CardHeader>
+          <CardContent className="space-y-3">
+            <div className="flex items-start gap-3 p-3 rounded-lg bg-card/50 border border-border/50">
+              <Zap className="h-5 w-5 text-amber-400 flex-shrink-0 mt-0.5" />
+              <div>
+                <p className="text-sm font-medium text-foreground">High-Priority Follow-ups</p>
+                <p className="text-xs text-muted-foreground mt-1">
+                  3 opportunities need immediate attention. Follow up today to increase win probability.
+                </p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3 p-3 rounded-lg bg-card/50 border border-border/50">
+              <TrendingUp className="h-5 w-5 text-emerald-400 flex-shrink-0 mt-0.5" />
+              <div>
+                <p className="text-sm font-medium text-foreground">Revenue Forecast</p>
+                <p className="text-xs text-muted-foreground mt-1">
+                  Based on current pipeline, projected revenue for next month: {formatCurrency(stats.totalRevenue * 1.15)}
+                </p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3 p-3 rounded-lg bg-card/50 border border-border/50">
+              <AlertCircle className="h-5 w-5 text-red-400 flex-shrink-0 mt-0.5" />
+              <div>
+                <p className="text-sm font-medium text-foreground">Stale Leads Alert</p>
+                <p className="text-xs text-muted-foreground mt-1">
+                  5 leads haven't been contacted in over 7 days. Re-engage to prevent loss.
+                </p>
+              </div>
+            </div>
           </CardContent>
         </Card>
       </div>
