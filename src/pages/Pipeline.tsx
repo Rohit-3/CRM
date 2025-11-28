@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -6,8 +6,15 @@ import { Badge } from '@/components/ui/badge';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Plus, Search, Sparkles, DollarSign, Calendar, User, TrendingUp, LayoutGrid, List, CalendarDays, BarChart3, MapPin, Settings } from 'lucide-react';
-import { getOpportunities, createOpportunity, updateOpportunity } from '@/db/api';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { Separator } from '@/components/ui/separator';
+import { 
+  Plus, Search, Sparkles, DollarSign, Calendar, User, TrendingUp, 
+  LayoutGrid, List, CalendarDays, BarChart3, Settings, 
+  MoreVertical, Edit, Trash2, Copy, Eye, Filter, SortAsc, 
+  Zap, Brain, Target, Clock, CheckCircle2, XCircle 
+} from 'lucide-react';
+import { getOpportunities, createOpportunity, updateOpportunity, deleteOpportunity } from '@/db/api';
 import { useAuth } from '@/components/auth/AuthProvider';
 import type { Opportunity } from '@/types/types';
 import { useToast } from '@/hooks/use-toast';
