@@ -9,7 +9,9 @@ const Accounts = lazy(() => import('./pages/Accounts'));
 const Opportunities = lazy(() => import('./pages/Opportunities'));
 const Pipeline = lazy(() => import('./pages/Pipeline'));
 const Tasks = lazy(() => import('./pages/Tasks'));
+const Activities = lazy(() => import('./pages/Activities'));
 const Reports = lazy(() => import('./pages/Reports'));
+const Settings = lazy(() => import('./pages/Settings'));
 const AIInsights = lazy(() => import('./pages/AIInsights'));
 const AdminPanel = lazy(() => import('./pages/AdminPanel'));
 const NotFound = lazy(() => import('./pages/NotFound'));
@@ -58,9 +60,19 @@ const routes: RouteConfig[] = [
     element: <Tasks />,
   },
   {
+    name: 'Activities',
+    path: '/activities',
+    element: <Activities />,
+  },
+  {
     name: 'Reports',
     path: '/reports',
     element: <Reports />,
+  },
+  {
+    name: 'Settings',
+    path: '/settings',
+    element: <Settings />,
   },
   {
     name: 'AI Insights',
