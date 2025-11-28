@@ -7,11 +7,12 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Plus, Search, DollarSign, Trash2 } from 'lucide-react';
+import { Plus, Search, DollarSign, Trash2, Sparkles } from 'lucide-react';
 import { getOpportunities, createOpportunity, deleteOpportunity } from '@/db/api';
 import { useAuth } from '@/components/auth/AuthProvider';
 import type { Opportunity } from '@/types/types';
 import { useToast } from '@/hooks/use-toast';
+import { predictOpportunityWinProbability } from '@/services/aiService';
 
 export default function Opportunities() {
   const [opportunities, setOpportunities] = useState<Opportunity[]>([]);
@@ -123,6 +124,29 @@ export default function Opportunities() {
       toast({
         title: 'Error',
         description: error.message || 'Failed to delete opportunity',
+        variant: 'destructive',
+      });
+    }
+  };
+
+  const handleAIPrediction = async (opportunity: Opportunity) => {
+    try {
+      toast({
+        title: 'AI Analysis',
+        description: 'Predicting win probability...',
+      });
+      
+      const result = await predictOpportunityWinProbability(opportunity);
+      
+      toast({
+        title: 'AI Win Probability',
+        description: `${result.probability}% chance of winning. ${result.reasoning}`,
+        duration: 10000,
+      });
+    } catch (error: any) {
+      toast({
+        title: 'AI Error',
+        description: error.message || 'Failed to predict win probability',
         variant: 'destructive',
       });
     }
@@ -318,13 +342,23 @@ export default function Opportunities() {
                         : '-'}
                     </TableCell>
                     <TableCell className="text-right">
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={() => handleDelete(opp.id)}
-                      >
-                        <Trash2 className="h-4 w-4 text-destructive" />
-                      </Button>
+                      <div className="flex items-center justify-end gap-2">
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => handleAIPrediction(opp)}
+                          title="AI Win Probability"
+                        >
+                          <Sparkles className="h-4 w-4 text-primary" />
+                        </Button>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => handleDelete(opp.id)}
+                        >
+                          <Trash2 className="h-4 w-4 text-destructive" />
+                        </Button>
+                      </div>
                     </TableCell>
                   </TableRow>
                 ))}

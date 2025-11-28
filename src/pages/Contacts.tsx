@@ -5,11 +5,12 @@ import { Input } from '@/components/ui/input';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Label } from '@/components/ui/label';
-import { Plus, Search, Mail, Phone, Trash2 } from 'lucide-react';
+import { Plus, Search, Mail, Phone, Trash2, Sparkles } from 'lucide-react';
 import { getContacts, createContact, deleteContact } from '@/db/api';
 import { useAuth } from '@/components/auth/AuthProvider';
 import type { Contact } from '@/types/types';
 import { useToast } from '@/hooks/use-toast';
+import { predictChurnRisk } from '@/services/aiService';
 
 export default function Contacts() {
   const [contacts, setContacts] = useState<Contact[]>([]);
@@ -118,6 +119,31 @@ export default function Contacts() {
       toast({
         title: 'Error',
         description: error.message || 'Failed to delete contact',
+        variant: 'destructive',
+      });
+    }
+  };
+
+  const handleChurnPrediction = async (contact: Contact) => {
+    try {
+      toast({
+        title: 'AI Analysis',
+        description: 'Analyzing churn risk...',
+      });
+      
+      const result = await predictChurnRisk(contact, []);
+      
+      const riskColor = result.riskLevel === 'high' ? '🔴' : result.riskLevel === 'medium' ? '🟡' : '🟢';
+      
+      toast({
+        title: `${riskColor} Churn Risk: ${result.riskLevel.toUpperCase()}`,
+        description: `${result.probability}% probability. ${result.reasoning}`,
+        duration: 10000,
+      });
+    } catch (error: any) {
+      toast({
+        title: 'AI Error',
+        description: error.message || 'Failed to predict churn risk',
         variant: 'destructive',
       });
     }
@@ -285,13 +311,23 @@ export default function Contacts() {
                       </div>
                     </TableCell>
                     <TableCell className="text-right">
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={() => handleDelete(contact.id)}
-                      >
-                        <Trash2 className="h-4 w-4 text-destructive" />
-                      </Button>
+                      <div className="flex items-center justify-end gap-2">
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => handleChurnPrediction(contact)}
+                          title="AI Churn Prediction"
+                        >
+                          <Sparkles className="h-4 w-4 text-primary" />
+                        </Button>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => handleDelete(contact.id)}
+                        >
+                          <Trash2 className="h-4 w-4 text-destructive" />
+                        </Button>
+                      </div>
                     </TableCell>
                   </TableRow>
                 ))}
